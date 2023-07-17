@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import "../client/styles.scss";
 import axios from "axios";
 
+
 export const Login = () => {
   const [isLogin, setLogin] = useState<boolean>(true);
-  const [fullName, setFullName] = useState<string>("");
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
+  const [role, setRole] = useState<string>('STUDENT')
 
   const handleLogin = (e: any) => {
     e.preventDefault();
@@ -16,8 +19,19 @@ export const Login = () => {
     //redirect
   };
 
-  const handleSignup = (e: any) => {
+  const handleSignup = async (e: any) => {
     e.preventDefault();
+    try {
+      const response = await axios.post('/signup', {
+         firstName, lastName, email, password, phone, role 
+      })
+      //handle response
+      
+    } catch (error) {
+      //handle error
+      console.log(error)
+    }
+   
     //make post request
     //clear inputs
     //redirect
@@ -33,6 +47,7 @@ export const Login = () => {
               type="email"
               placeholder="Email"
               value={email}
+              required
               onChange={(e) => setEmail(e.target.value)}
             ></input>
             <label htmlFor="loginPassword"></label>
@@ -40,6 +55,7 @@ export const Login = () => {
               type="password"
               value={password}
               placeholder="Password"
+              required
               onChange={(e) => setPassword(e.target.value)}
             ></input>
             <button className="login-btn" type="submit">
@@ -56,19 +72,30 @@ export const Login = () => {
       ) : (
         <>
           <form className="form" onSubmit={handleSignup}>
-            <label htmlFor="name"></label>
+            <label htmlFor="firstName"></label>
             <input
-              id="name"
+              id="firstName"
               type="text"
-              placeholder="Full Name"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
+              placeholder="First Name"
+              required
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            ></input>
+            <label htmlFor="lastName"></label>
+            <input
+              id="lastName"
+              type="text"
+              placeholder="Last Name"
+              required
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
             ></input>
             <label htmlFor="email"></label>
             <input
               id="email"
               type="email"
               placeholder="Email"
+              required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             ></input>
@@ -77,6 +104,7 @@ export const Login = () => {
               id="phone"
               type="tel"
               value={phone}
+              required
               placeholder="Phone Number"
               onChange={(e) => setPhone(e.target.value)}
             ></input>
@@ -85,12 +113,19 @@ export const Login = () => {
               id="password"
               type="password"
               placeholder="Password"
+              required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             ></input>
             <button className="login-btn" type="submit">
               Sign Up
             </button>
+            <p>
+              Already have an account?{" "}
+              <span className="signup-link" onClick={() => setLogin(true)}>
+               Login
+              </span>
+            </p>
           </form>
         </>
       )}

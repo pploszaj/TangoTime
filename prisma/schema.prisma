@@ -1,0 +1,58 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id String @id @default(uuid())
+  firstName String
+  lastName String
+  email String @unique
+  password String
+  phone String 
+  role Role
+  availabilities Availability[]
+  bookings Booking[] @relation("TeacherBooking")
+  studentBookings Booking[] @relation("StudentBooking")
+}
+
+model Availability {
+  availabilityId String @id @default(uuid())
+  dayOfWeek String 
+  startTime DateTime
+  endTime DateTime
+  availabilityStatus String
+  teacher User @relation(fields: [teacherId], references: [id])
+  teacherId String
+}
+
+model Booking {
+  bookingId String @id @default(uuid())
+  createdAt DateTime @default(now())
+  startDateTime DateTime
+  endDateTime DateTime
+  bookingStatus BookingStatus
+  studentId String
+  teacherId String
+  student User @relation("StudentBooking", fields: [studentId], references: [id])
+  teacher User @relation("TeacherBooking", fields: [teacherId], references: [id])
+}
+
+enum Role {
+  STUDENT
+  TEACHER
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
