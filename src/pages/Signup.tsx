@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../client/UserContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -10,6 +11,8 @@ export const Signup = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
+  const { userData, updateUserData } = useContext(UserContext);
+
 
   const handleSignup = async (e: any) => {
     e.preventDefault();
@@ -22,6 +25,8 @@ export const Signup = () => {
         phone,
         role,
       });
+      //save user data to context
+      updateUserData({firstName, lastName, phone, role, email})
       //handle response
       console.log(response);
     } catch (error) {
