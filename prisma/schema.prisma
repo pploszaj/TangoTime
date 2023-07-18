@@ -21,6 +21,8 @@ model User {
   availabilities Availability[]
   bookings Booking[] @relation("TeacherBooking")
   studentBookings Booking[] @relation("StudentBooking")
+
+  @@unique([email, password])
 }
 
 model Availability {

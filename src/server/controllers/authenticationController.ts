@@ -24,7 +24,23 @@ const authenicationController = {
     }
   },
 
-  findUser: (req: Request, res: Response, next: NextFunction) => {},
+  findUser: async (req: Request, res: Response, next: NextFunction) => {
+    const {email, password} = req.body;
+    try {
+      const user = await prisma.user.findUnique({
+        where: {
+          email_password: {
+            email,
+            password
+          }
+        }
+      })
+      console.log('found user', user)
+    }
+    catch (error) {
+      console.log(error);
+    }
+  },
 };
 
 export default authenicationController;

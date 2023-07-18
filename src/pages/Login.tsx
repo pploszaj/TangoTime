@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../client/styles.scss";
 import axios from "axios";
+import { response } from "express";
 
 
 export const Login = () => {
@@ -12,11 +13,25 @@ export const Login = () => {
   const [phone, setPhone] = useState<string>("");
   const [role, setRole] = useState<string>('STUDENT')
 
-  const handleLogin = (e: any) => {
+  const handleLogin = async (e: any) => {
     e.preventDefault();
+    // console.log(email)
+    // console.log(password)
     //make get request
+    try {
+      const response = await axios.post('/login', {
+        email, password
+      })
+      console.log(response)
+    }
+    //handle response
+    
+    catch (error) {
+      console.log(error)
+    }
     //clear all inputs
     //redirect
+
   };
 
   const handleSignup = async (e: any) => {
@@ -26,7 +41,8 @@ export const Login = () => {
          firstName, lastName, email, password, phone, role 
       })
       //handle response
-      
+      console.log(response)
+
     } catch (error) {
       //handle error
       console.log(error)
