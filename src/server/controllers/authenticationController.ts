@@ -36,6 +36,7 @@ const authenicationController = {
         }
       })
       console.log('found user', user)
+      return next()
     }
     catch (error) {
       console.log(error);
