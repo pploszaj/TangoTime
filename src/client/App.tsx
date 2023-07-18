@@ -4,6 +4,8 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import SelectRole from "../pages/SelectRole";
 import Signup from "../pages/Signup";
+import StudentHome from "../pages/StudentHome";
+import TeacherSignup from "../pages/TeacherSignup";
 import { UserContext } from "./UserContext";
 
 function App() {
@@ -27,6 +29,8 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/role" element={<SelectRole />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/teachersignup" element={<TeacherSignup/>}/>
+          <Route path="/studenthome" element={<StudentHome/>}/>
         </Routes>
       </Router>
     </UserContext.Provider>

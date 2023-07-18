@@ -2,12 +2,12 @@ import React, { useState, useContext } from "react";
 import { UserContext } from "../client/UserContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import TeacherSignup from "./TeacherSignup";
 
 export const Signup = () => {
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
-  const [role, setRole] = useState<string>("STUDENT");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
@@ -23,12 +23,17 @@ export const Signup = () => {
         email,
         password,
         phone,
-        role,
+        role: userData.role,
       });
       //save user data to context
-      updateUserData({firstName, lastName, phone, role, email})
+      updateUserData({firstName, lastName, phone, email})
       //handle response
       console.log(response);
+      if(userData.role === 'TEACHER'){
+        navigate('/teachersignup')
+      } else {
+        navigate('/studenthome')
+      }
     } catch (error) {
       //handle error
       console.log(error);
