@@ -5,6 +5,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import axios from "axios";
 import { UserContext } from "../client/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const TeacherSignup = () => {
   const [mondayStart, setMondayStart] = useState<any>("");
@@ -23,6 +24,7 @@ const TeacherSignup = () => {
   const [sundayEnd, setSundayEnd] = useState<any>("");
   const { userData, updateUserData } = useContext(UserContext);
   const teacherId = userData.id;
+  const navigate = useNavigate();
 
 
   const handleButton = async () => {
@@ -46,36 +48,36 @@ const TeacherSignup = () => {
       },
       {
         dayOfWeek: "Wednesday",
-        startTime: mondayStart.toDate(), // convert to JavaScript Date object
-        endTime: mondayEnd.toDate(),
+        startTime: wednesdayStart === "" ? wednesdayStart : wednesdayStart.toDate(), // convert to JavaScript Date object
+        endTime: wednesdayStart === "" ? wednesdayStart : wednesdayEnd.toDate(),
         teacherId: teacherId, // Add teacherId
         availabilityStatus: "AVAILABLE", // convert to JavaScript Date object
       },
       {
         dayOfWeek: "Thursday",
-        startTime: tuesdayStart.toDate(), // convert to JavaScript Date object
-        endTime: tuesdayEnd.toDate(),
+        startTime: thursdayStart === "" ? thursdayStart : thursdayStart.toDate(), // convert to JavaScript Date object
+        endTime: thursdayEnd === "" ? thursdayEnd : thursdayEnd.toDate(),
         teacherId: teacherId, // Add teacherId
         availabilityStatus: "AVAILABLE", // convert to JavaScript Date object
       },
       {
         dayOfWeek: "Friday",
-        startTime: mondayStart.toDate(), // convert to JavaScript Date object
-        endTime: mondayEnd.toDate(),
+        startTime: fridayStart.toDate(), // convert to JavaScript Date object
+        endTime: fridayEnd.toDate(),
         teacherId: teacherId, // Add teacherId
         availabilityStatus: "AVAILABLE", // convert to JavaScript Date object
       },
       {
         dayOfWeek: "Saturday",
-        startTime: tuesdayStart.toDate(), // convert to JavaScript Date object
-        endTime: tuesdayEnd.toDate(),
+        startTime: saturdayStart.toDate(), // convert to JavaScript Date object
+        endTime: saturdayEnd.toDate(),
         teacherId: teacherId, // Add teacherId
         availabilityStatus: "AVAILABLE", // convert to JavaScript Date object
       },
       {
         dayOfWeek: "Sunday",
-        startTime: mondayStart.toDate(), // convert to JavaScript Date object
-        endTime: mondayEnd.toDate(),
+        startTime: sundayStart.toDate(), // convert to JavaScript Date object
+        endTime: sundayEnd.toDate(),
         teacherId: teacherId, // Add teacherId
         availabilityStatus: "AVAILABLE", // convert to JavaScript Date object
       },
@@ -83,11 +85,11 @@ const TeacherSignup = () => {
     try {
       const response = await axios.post("/teacherschedule", schedule);
       console.log(response.data);
+      navigate('/teacherhome')
     } catch (err) {
       console.log(err);
     }
   };
-
 
   return (
     <>

@@ -6,6 +6,7 @@ import SelectRole from "../pages/SelectRole";
 import Signup from "../pages/Signup";
 import StudentHome from "../pages/StudentHome";
 import TeacherSignup from "../pages/TeacherSignup";
+import TeacherHome from "../pages/TeacherHome";
 import { UserContext } from "./UserContext";
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/teachersignup" element={<TeacherSignup/>}/>
           <Route path="/studenthome" element={<StudentHome/>}/>
+          <Route path="/teacherhome" element={<TeacherHome/>}/>
         </Routes>
       </Router>
     </UserContext.Provider>

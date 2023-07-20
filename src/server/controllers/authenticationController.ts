@@ -47,14 +47,24 @@ const authenicationController = {
   updateSchedule: async (req: Request, res: Response, next: NextFunction) => {
     console.log('in the updateSchedule controller')
     const schedule = req.body;
-    console.log('schedule', schedule)
-    const availabilities = schedule.map((slot: { dayOfWeek: string; startTime: Date; endTime: Date; teacherId: string; availabilityStatus: string; }) => ({
+  
+    const availabilities = schedule.map((slot: { dayOfWeek: string; startTime: Date | string | number; endTime: Date | string | number; teacherId: string; availabilityStatus: string; }) => {
+      if(slot.startTime === "" || slot.endTime === "") {
+        slot.startTime = 1000;
+        slot.endTime = 1000;
+        slot.availabilityStatus = 'UNAVAILABLE'
+      }
+
+      return {
       dayOfWeek: slot.dayOfWeek,
       startTime: new Date(slot.startTime),
       endTime: new Date(slot.endTime),
       teacherId: slot.teacherId,
       availabilityStatus: slot.availabilityStatus
-    }))
+      }})
+
+      console.log(availabilities)
+    
 
     try {
       const result = await prisma.availability.createMany({data: availabilities});
