@@ -18,6 +18,7 @@ const authenicationController = {
           role,
         },
       });
+      res.locals.userid = user.id;
       return next()
     } catch (error) {
       console.log(error);
@@ -42,6 +43,29 @@ const authenicationController = {
       console.log(error);
     }
   },
+
+  updateSchedule: async (req: Request, res: Response, next: NextFunction) => {
+    console.log('in the updateSchedule controller')
+    const schedule = req.body;
+    console.log('schedule', schedule)
+    const availabilities = schedule.map((slot: { dayOfWeek: string; startTime: Date; endTime: Date; teacherId: string; availabilityStatus: string; }) => ({
+      dayOfWeek: slot.dayOfWeek,
+      startTime: new Date(slot.startTime),
+      endTime: new Date(slot.endTime),
+      teacherId: slot.teacherId,
+      availabilityStatus: slot.availabilityStatus
+    }))
+
+    try {
+      const result = await prisma.availability.createMany({data: availabilities});
+      res.locals.availabilities = result;
+      return next()
+    }
+    catch(err) {
+      console.log(err)
+    }
+
+  }
 };
 
 export default authenicationController;

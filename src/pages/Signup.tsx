@@ -26,9 +26,8 @@ export const Signup = () => {
         role: userData.role,
       });
       //save user data to context
-      updateUserData({firstName, lastName, phone, email})
-      //handle response
-      console.log(response);
+      updateUserData({firstName, lastName, phone, email, role: userData.role, id: response.data})
+    
       if(userData.role === 'TEACHER'){
         navigate('/teachersignup')
       } else {

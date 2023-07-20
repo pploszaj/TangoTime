@@ -7,6 +7,7 @@ interface UserContextInterface {
       email?: string;
       phone?: string;
       role?: string;
+      id?: string;
     };
     updateUserData: (value: {}) => void;
   }
@@ -18,6 +19,7 @@ export const UserContext = createContext<UserContextInterface>({
     email: "",
     phone: "",
     role: "",
+    id: ""
   },
   updateUserData: () => {}
 });
