@@ -75,6 +75,17 @@ const authenicationController = {
       console.log(err)
     }
 
+  },
+
+  findTeachers: async (req: Request, res: Response, next: NextFunction) => {
+    console.log('in the findTeachers function');
+    try {
+      const response = await prisma.user.findMany();
+      console.log('response', response)
+      res.locals.teachers = response
+    } catch(e) {
+      console.log('Error: ', e)
+    }
   }
 };
 
