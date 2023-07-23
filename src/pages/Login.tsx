@@ -25,6 +25,9 @@ export const Login = () => {
         email, password
       })
       console.log(response)
+      if(response.status === 200){
+        navigate('/studenthome');
+      }
     }
     //handle response
     
