@@ -8,9 +8,9 @@ const Home = () => {
   return (
     <div className="home-container">
       <div className="home-text">
-        <h1>LET'S DANCE</h1>
-        <button className="book-me-btn" onClick={() => navigate("/login")}>
-          Get Started
+        <h1 className="logo-text">Tango <span>Time</span></h1>
+        <button className="home-btn" onClick={() => navigate("/login")}>
+          Start Dancing
         </button>
       </div>
     </div>

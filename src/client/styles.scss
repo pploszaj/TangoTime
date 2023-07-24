@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lobster&family=Mr+Dafoe&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+/* font-family: 'Great Vibes', cursive;
+// font-family: 'Lobster', cursive;
+ font-family: 'Mr Dafoe', cursive;
+ font-family: 'Lato', sans-serif;
+*/
+
 *{
     margin: 0;
     padding: 0;
@@ -8,6 +16,47 @@ html, body, #root{
     height: 100vh;
 }
 
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: rgb(238, 94, 94);
+}
+
+.home-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.home-btn{
+    width: 12rem;
+    align-self: center;
+    background-color: inherit;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 10px 0px;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+}
+
+.home-btn:hover{
+    border: 1px solid rgb(196, 8, 8);
+    color:  rgb(196, 8, 8);
+}
+
+.logo-text {
+    color: rgb(196, 8, 8);
+    font-family: 'Lobster', cursive;
+    font-size: 6rem;
+
+}
+
+.logo-text span {
+    color: black;
+}
 
 .book-me-btn{
     cursor: pointer;
@@ -27,16 +76,36 @@ html, body, #root{
     gap: .25rem;
 }
 
+.form input{
+    width: 14rem;
+    height: 2.5rem;
+    border-radius: 20px;
+    border: 0px solid black;
+    padding-left: 1rem;
+    font-family: 'Lato', sans-serif;
+}
+
+.form p {
+    font-family: 'Lato', sans-serif;
+}
+
 .login-container{
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgb(238, 94, 94);
 }
 
 .login-btn {
-    margin-top: .25rem;
+    margin-top: 1rem;
     width: 5rem;
+    background-color: inherit;
+    border: 1px solid black;
+    border-radius: 3px;
+    width: 5rem;
+    height: 1.5rem;
+    font-family: 'Lato', sans-serif;
 }
 
 .teacher-list {
@@ -64,16 +133,37 @@ html, body, #root{
     border: 1px solid rgb(42, 42, 236);
     cursor: pointer;
 }
-
-.home-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.role-container{
     height: 100%;
 }
 
-.home-text{
+.role-options{
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    height: 90%;
+}
+
+.role-options button {
+    height: 20rem;
+    width: 16rem;
+    background-color: inherit;
+    border: 1px solid red;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+    font-size: 2rem;
+}
+
+.role-options button:focus{
+    border: 1px solid blue;
+}
+
+.continue-btn {
+    text-align: center;
+}
+
+.continue-btn button {
+    cursor: pointer;
 }
