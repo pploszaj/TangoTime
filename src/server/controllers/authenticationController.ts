@@ -91,6 +91,28 @@ const authenicationController = {
     } catch(e) {
       console.log('Error: ', e)
     }
+  },
+
+  getTimes: async (req: Request, res: Response, next: NextFunction) => {
+    console.log('in the getTimes controller');
+    const {teacherId, dayOfWeek} = req.body
+    console.log(teacherId)
+    console.log(dayOfWeek)
+    
+    try{
+      const response = await prisma.availability.findMany({
+        where: {
+          teacherId: teacherId,
+          dayOfWeek: dayOfWeek,
+          availabilityStatus: 'AVAILABLE'
+        }
+      });
+      console.log(response);
+      res.locals.times = response
+      return next();
+    } catch (e) {
+      console.log('Error getting times: ', e)
+    }
   }
 };
 
