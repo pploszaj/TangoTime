@@ -41,3 +41,19 @@ html, body, #root{
     margin-top: 2rem;
 }
 
+.teacher-name{
+    height: 160px;
+    width: 150px;
+    padding: 30px 20px;
+    border: 1px solid rgb(235, 235, 242);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+}
+
+.teacher-name:hover{
+    border: 1px solid rgb(42, 42, 236);
+    cursor: pointer;
+}
