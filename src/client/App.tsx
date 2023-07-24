@@ -8,7 +8,7 @@ import StudentHome from "../pages/StudentHome";
 import TeacherSignup from "../pages/TeacherSignup";
 import TeacherHome from "../pages/TeacherHome";
 import { UserContext } from "./UserContext";
-import TeacherBooking from "../components/TeacherBooking";
+import TeacherBooking from "../pages/TeacherBooking";
 
 function App() {
   const [userData, setUserData] = useState({
@@ -35,7 +35,7 @@ function App() {
           <Route path="/teachersignup" element={<TeacherSignup/>}/>
           <Route path="/studenthome" element={<StudentHome/>}/>
           <Route path="/teacherhome" element={<TeacherHome/>}/>
-          <Route path="/teachers:id" element={<TeacherBooking/>}/>
+          <Route path="/teachers/:id" element={<TeacherBooking/>}/>
         </Routes>
       </Router>
     </UserContext.Provider>

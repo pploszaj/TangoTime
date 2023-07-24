@@ -20,10 +20,13 @@ module.exports = {
             exclude: /node_modules/,
           },
           {
-            test: /\.s?[ac]ss$/i,
-            exclude: /node_modules/,
+            test: /\.css$/i,
+            use: ['style-loader', 'css-loader'],
+          },
+          {
+            test: /\.s[ac]ss$/i,
             use: [MiniCssExtractPlugin.loader, 'css-loader'],
-          }
+          },
         ],
     },
     devServer: {
