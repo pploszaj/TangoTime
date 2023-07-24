@@ -24,6 +24,7 @@ html, body, #root{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: .25rem;
 }
 
 .login-container{
@@ -31,6 +32,11 @@ html, body, #root{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.login-btn {
+    margin-top: .25rem;
+    width: 5rem;
 }
 
 .teacher-list {
@@ -57,4 +63,17 @@ html, body, #root{
 .teacher-name:hover{
     border: 1px solid rgb(42, 42, 236);
     cursor: pointer;
+}
+
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.home-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
