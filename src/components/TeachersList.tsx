@@ -1,17 +1,20 @@
-import { type } from 'os'
-import React from 'react'
+import { type } from "os";
+import React from "react";
 
-
-
-const TeachersList= (props: { teachers: any[] }) => {
+const TeachersList = (props: { teachers: any[] }) => {
   return (
     <div>
-        <h1>Choose a teacher</h1>
+      <h1 className="choose-teacher-heading">Choose a teacher</h1>
+      <div className="teacher-list">
         {props.teachers.map((teacher) => (
-            <h1>{teacher.firstName + ' ' + teacher.lastName}</h1>
+          <div className="teacher-name">
+            <p>{teacher.firstName}</p>
+            <b>{teacher.lastName}</b>
+          </div>
         ))}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default TeachersList
+export default TeachersList;

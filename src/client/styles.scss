@@ -32,3 +32,12 @@ html, body, #root{
     justify-content: center;
     align-items: center;
 }
+
+.teacher-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
