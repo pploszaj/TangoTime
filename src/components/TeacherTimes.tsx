@@ -6,14 +6,14 @@ type TeacherTimesProp = {
   teacherId: string | undefined;
 };
 
-const TeacherTimes = (props: TeacherTimesProp) => {
+const TeacherTimes = ({dayOfWeek, teacherId}: TeacherTimesProp) => {
   const [times, setTimes] = useState<any>([]);
   useEffect(() => {
     const getTimes = async () => {
       try {
         const response = await axios.post("/getTimes", {
-          teacherId: props.teacherId,
-          dayOfWeek: props.dayOfWeek,
+          teacherId,
+          dayOfWeek
         });
 
         console.log("response: ", response.data);
@@ -24,7 +24,7 @@ const TeacherTimes = (props: TeacherTimesProp) => {
     };
 
     getTimes();
-  }, [props.dayOfWeek]);
+  }, [dayOfWeek]);
 
   if(times.length > 0){
     return (

@@ -8,7 +8,7 @@ const TeacherCalendar = () => {
   const [day, setDay] = useState('');
   const {id} = useParams();
 
-  const handleDateChange = (currDate: any) => {
+  const handleDateChange = (currDate: Date) => {
     setDate(currDate);
 
     const dayOfWeek = currDate.getDay();

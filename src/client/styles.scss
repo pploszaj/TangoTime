@@ -81,6 +81,7 @@ html, body, #root{
     height: 2.5rem;
     border-radius: 20px;
     border: 0px solid black;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
     padding-left: 1rem;
     font-family: 'Lato', sans-serif;
 }
@@ -98,6 +99,7 @@ html, body, #root{
 }
 
 .login-btn {
+    cursor: pointer;
     margin-top: 1rem;
     width: 5rem;
     background-color: inherit;

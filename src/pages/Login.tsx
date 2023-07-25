@@ -15,7 +15,7 @@ export const Login = () => {
   // const [role, setRole] = useState<string>('STUDENT')
   const navigate = useNavigate();
 
-  const handleLogin = async (e: any) => {
+  const handleLogin: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     // console.log(email)
     // console.log(password)
