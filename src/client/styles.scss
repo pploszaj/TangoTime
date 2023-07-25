@@ -14,13 +14,37 @@
 
 html, body, #root{
     height: 100vh;
+    background-color: rgb(238, 94, 94);
 }
+
+.nav img {
+    height: 40px;
+    margin-left: 3rem;
+}
+
+.home-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem;
+    background-color: rgb(238, 94, 94);
+    border-bottom: 1px solid black;
+    
+}
+
+.nav-2 {
+    display: flex;
+    gap: 1.5rem;
+    margin-right: 3rem;
+    font-family: 'Lato', sans-serif;
+}
+
 
 .home-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: 91%;
     background-color: rgb(238, 94, 94);
 }
 
@@ -137,6 +161,7 @@ html, body, #root{
 }
 .role-container{
     height: 100%;
+    background-color: rgb(248, 241, 241);
 }
 
 .role-options{
