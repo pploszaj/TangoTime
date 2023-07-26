@@ -34,10 +34,7 @@ const StudentHome = () => {
   }, []);
 
   return (
-    <>
-      <StudentNavBar />
       <TeachersList teachers={teachers} />
-    </>
   );
 };
 

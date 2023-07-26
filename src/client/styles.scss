@@ -134,6 +134,13 @@ html, body, #root{
     font-family: 'Lato', sans-serif;
 }
 
+.signup-form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
 .teacher-list {
     display: flex;
     flex-wrap: wrap;
@@ -181,6 +188,13 @@ html, body, #root{
     cursor: pointer;
     font-family: 'Lato', sans-serif;
     font-size: 2rem;
+}
+
+.teacher-list-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .role-options button:focus{
