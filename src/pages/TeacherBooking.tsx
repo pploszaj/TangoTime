@@ -7,7 +7,7 @@ const TeacherBooking = () => {
     const {id} = useParams();
 
   return (
-    <div>
+    <div className='calendar-container'>
         <h2>Teacher ID: {id}</h2>
         <TeacherCalendar/>
     </div>

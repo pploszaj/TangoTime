@@ -208,3 +208,32 @@ html, body, #root{
 .continue-btn button {
     cursor: pointer;
 }
+
+.calendar-container{
+    height: 100%;
+}
+
+.times{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.time-btn{
+    height: 2rem;
+    width: 6rem;
+    background-color: inherit;
+    border: 1px solid red;
+    border-radius: 18px;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+}
+
+.time-btn:focus{
+    border: 1px solid blue;
+    background-color: blue;
+    color: white;
+}
