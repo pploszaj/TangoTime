@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import { useParams } from "react-router-dom";
 import TeacherTimes from "./TeacherTimes";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
 const TeacherCalendar = () => {
   const [date, setDate] = useState(new Date());
-  const [day, setDay] = useState('');
-  const {id} = useParams();
+  const [day, setDay] = useState("");
+  const { id } = useParams();
 
-  const handleDateChange = (currDate: Date) => {
+  const handleDateChange = (currDate: any) => {
     setDate(currDate);
 
     const dayOfWeek = currDate.getDay();
@@ -29,8 +31,14 @@ const TeacherCalendar = () => {
 
   return (
     <>
-      <DatePicker selected={date} onChange={handleDateChange} />
-      {day && <TeacherTimes dayOfWeek={day} teacherId = {id}/>}
+      <div className="calendar-container">
+        <Calendar
+          value={date}
+          onChange={handleDateChange}
+          className="calendar"
+        />
+      </div>
+      {day && <TeacherTimes dayOfWeek={day} teacherId={id} />}
     </>
   );
 };

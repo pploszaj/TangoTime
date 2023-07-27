@@ -209,8 +209,18 @@ html, body, #root{
     cursor: pointer;
 }
 
+.booking-page-container{
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
 .calendar-container{
-    height: 100%;
+    height: 70%;
+    display: flex;
+    margin-top: 3rem;
+    justify-content: center;
+    align-items: center;
 }
 
 .times{
@@ -222,18 +232,40 @@ html, body, #root{
 }
 
 .time-btn{
-    height: 2rem;
-    width: 6rem;
+    height: 2.5rem;
+    width: 8rem;
     background-color: inherit;
     border: 1px solid red;
     border-radius: 18px;
     cursor: pointer;
     font-family: 'Lato', sans-serif;
-    font-size: 1rem;
+    font-size: 80%;
+    padding: 8px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center
 }
 
 .time-btn:focus{
     border: 1px solid blue;
     background-color: blue;
     color: white;
+}
+
+.calendar{
+    border: 1px solid black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 25rem;
+}
+
+.book-btn-container{
+    display: flex;
+    justify-content: center;
+}
+
+.book-btn{
+    height: 3rem;
+    width: 8rem;
+    border: 1px solid blue;
+    border-radius: 15px;
 }

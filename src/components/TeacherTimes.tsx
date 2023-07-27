@@ -41,11 +41,16 @@ const TeacherTimes = ({ dayOfWeek, teacherId }: TeacherTimesProp) => {
     }
 
     return (
-      <div className="times">
-        {arrayOfTimes.map((time, i) => {
-          return <TimeButtons key={i} time={time}></TimeButtons>;
-        })}
-      </div>
+      <>
+        <div className="times">
+          {arrayOfTimes.map((time, i) => {
+            return <TimeButtons key={i} time={time}></TimeButtons>;
+          })}
+        </div>
+        <div className="book-btn-container">
+          <button className="book-btn">Book</button>
+        </div>
+      </>
     );
   } else return null;
 };
