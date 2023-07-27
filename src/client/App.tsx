@@ -9,7 +9,7 @@ import TeacherSignup from "../pages/TeacherSignup";
 import TeacherHome from "../pages/TeacherHome";
 import { UserContext } from "./UserContext";
 import TeacherBooking from "../pages/TeacherBooking";
-import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
   const [userData, setUserData] = useState({
@@ -18,31 +18,38 @@ function App() {
     email: "",
     phone: "",
     role: "",
-    id: ""
+    id: "",
   });
 
   const updateUserData = (newData: any) => {
-    setUserData(prevData => ({...prevData, ...newData}))
-  }
+    setUserData((prevData) => ({ ...prevData, ...newData }));
+  };
 
-  const client = new QueryClient();
+  const client = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: Infinity,
+        cacheTime: Infinity,
+      },
+    },
+  });
 
   return (
-    <UserContext.Provider value={{userData, updateUserData}}>
-      <QueryClientProvider client={client}>
+    <UserContext.Provider value={{ userData, updateUserData }}>
       <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/role" element={<SelectRole />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/teachersignup" element={<TeacherSignup/>}/>
-          <Route path="/studenthome" element={<StudentHome/>}/>
-          <Route path="/teacherhome" element={<TeacherHome/>}/>
-          <Route path="/teachers/:id" element={<TeacherBooking/>}/>
-        </Routes>
+        <QueryClientProvider client={client}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/role" element={<SelectRole />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/teachersignup" element={<TeacherSignup />} />
+            <Route path="/studenthome" element={<StudentHome />} />
+            <Route path="/teacherhome" element={<TeacherHome />} />
+            <Route path="/teachers/:id" element={<TeacherBooking />} />
+          </Routes>
+        </QueryClientProvider>
       </Router>
-      </QueryClientProvider>
     </UserContext.Provider>
   );
 }

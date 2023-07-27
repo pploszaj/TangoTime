@@ -4,7 +4,6 @@ import axios from "axios";
 import { response } from "express";
 import { useNavigate } from "react-router-dom";
 
-
 export const Login = () => {
   // const [isLogin, setLogin] = useState<boolean>(true);
   // const [firstName, setFirstName] = useState<string>("");
@@ -17,76 +16,54 @@ export const Login = () => {
 
   const handleLogin: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    // console.log(email)
-    // console.log(password)
-    //make get request
+
     try {
-      const response = await axios.post('/login', {
-        email, password
-      })
-      console.log(response)
-      if(response.status === 200){
-        navigate('/studenthome');
+      const response = await axios.post("/login", {
+        email,
+        password,
+      });
+      console.log(response);
+      if (response.status === 200) {
+        navigate("/studenthome");
       }
-    }
-    //handle response
-    
-    catch (error) {
-      console.log(error)
+    } catch (error) {
+      //handle response
+
+      console.log(error);
     }
     //clear all inputs
     //redirect
-
   };
-
-  // const handleSignup = async (e: any) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await axios.post('/signup', {
-  //        firstName, lastName, email, password, phone, role 
-  //     })
-  //     //handle response
-  //     console.log(response)
-
-  //   } catch (error) {
-  //     //handle error
-  //     console.log(error)
-  //   }
-   
-  //   //make post request
-  //   //clear inputs
-  //   //redirect
-  // };
 
   return (
     <div className="login-container">
-          <form className="form" onSubmit={handleLogin}>
-            <label htmlFor="loginEmail"></label>
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              required
-              onChange={(e) => setEmail(e.target.value)}
-            ></input>
-            <label htmlFor="loginPassword"></label>
-            <input
-              type="password"
-              value={password}
-              placeholder="Password"
-              required
-              onChange={(e) => setPassword(e.target.value)}
-            ></input>
-            <button className="login-btn" type="submit">
-              Login
-            </button>
-            <p>
-              Don't have an account?{" "}
-              <span className="signup-link" onClick={() => navigate('/role')}>
-                Sign up
-              </span>
-            </p>
-          </form>
+      <form className="form" onSubmit={handleLogin}>
+        <label htmlFor="loginEmail"></label>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          required
+          onChange={(e) => setEmail(e.target.value)}
+        ></input>
+        <label htmlFor="loginPassword"></label>
+        <input
+          type="password"
+          value={password}
+          placeholder="Password"
+          required
+          onChange={(e) => setPassword(e.target.value)}
+        ></input>
+        <button className="login-btn" type="submit">
+          Login
+        </button>
+        <p>
+          Don't have an account?{" "}
+          <span className="signup-link" onClick={() => navigate("/role")}>
+            Sign up
+          </span>
+        </p>
+      </form>
     </div>
   );
 };
