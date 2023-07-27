@@ -27,12 +27,20 @@ const TeacherTimes = ({dayOfWeek, teacherId}: TeacherTimesProp) => {
   }, [dayOfWeek]);
 
   if(times.length > 0){
+    console.log('times', times)
+    let s = new Date(times[0].startTime);
+    let e = new Date(times[0].endTime);
+    console.log(s.toTimeString().slice(0,5))
+    const arrayOfTimes = [];
+    while(s < e){
+        arrayOfTimes.push(s.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }));
+        s.setMinutes(s.getMinutes() + 45);
+    }
+
     return (
         <div>
-            {times.map((time: { startTime: string, availabilityId: string }) => {
-                let date = new Date(time.startTime);
-                let dateString = date.toLocaleString("en-US", { timeZone: "America/New_York", hour: '2-digit', minute: '2-digit' })
-                return <h1 key={time.availabilityId}>{dateString}</h1>
+            {arrayOfTimes.map((time, i) => {
+                return <h1 key={i}>{time}</h1>
             })}
         </div>
     )
