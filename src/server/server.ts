@@ -11,7 +11,7 @@ app.post('/signup', authenticationController.createUser, (req,res) => {
 })
 
 app.post('/login', authenticationController.findUser, (req,res) => {
-    res.send('Successfully found user')
+    res.json(res.locals.userData)
 })
 
 app.post('/teacherschedule', authenticationController.updateSchedule, (req,res) => {
@@ -24,6 +24,10 @@ app.get('/teachers', authenticationController.findTeachers, (req,res) => {
 
 app.post('/getTimes', authenticationController.getTimes, (req,res) => {
     res.json(res.locals.times)
+})
+
+app.post('/booking', authenticationController.bookLesson, (req,res) => {
+    res.send('Booking Successful')
 })
 
 

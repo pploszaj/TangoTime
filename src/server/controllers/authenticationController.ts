@@ -37,6 +37,7 @@ const authenicationController = {
         }
       })
       console.log('found user', user)
+      res.locals.userData = user
       return next()
     }
     catch (error) {
@@ -113,6 +114,30 @@ const authenicationController = {
     } catch (e) {
       console.log('Error getting times: ', e)
     }
+  },
+
+  bookLesson: async (req: Request, res:Response, next:NextFunction) => {
+    console.log('in the bookLesson middleware');
+    const {studentId, teacherId, startDateTime, endDateTime } = req.body;
+
+    try {
+      const response = await prisma.booking.create({
+        data: {
+          startDateTime,
+          endDateTime,
+          student: {
+            connect: { id: studentId },
+          },
+          teacher: {
+            connect: { id: teacherId },
+        },
+      }
+    })
+      return next();
+    } catch(error) {
+      console.log('Error: ', error)
+    }
+
   }
 };
 

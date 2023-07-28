@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import TimeButtons from "./TimeButtons";
+import { UserContext } from "../client/UserContext";
 
 type TeacherTimesProp = {
   dayOfWeek: string;
@@ -9,6 +10,9 @@ type TeacherTimesProp = {
 
 const TeacherTimes = ({ dayOfWeek, teacherId }: TeacherTimesProp) => {
   const [times, setTimes] = useState<any>([]);
+  const [bookedTime, setBookedTime] = useState("");
+  const { userData } = useContext(UserContext);
+
   useEffect(() => {
     const getTimes = async () => {
       try {
@@ -27,6 +31,54 @@ const TeacherTimes = ({ dayOfWeek, teacherId }: TeacherTimesProp) => {
     getTimes();
   }, [dayOfWeek]);
 
+  const bookHandler = (event: any) => {
+    setBookedTime(event.target.value);
+  };
+
+  function convertTo24Hour(time: string) {
+    let [hours, minutes] = time.split(/[:\s]/);
+    let period = time.match(/AM|PM/)?.[0];
+  
+    if (period === "PM" && hours !== "12") {
+      hours = (parseInt(hours) + 12).toString();
+    } else if (period === "AM" && hours === "12") {
+      hours = "00";
+    }
+  
+    return `${hours}:${minutes}`;
+  }
+
+  // let timeString = "02:30 PM";
+  // let time24Hour = convertTo24Hour(timeString);
+  // console.log(time24Hour); // Output: 14:30
+
+  const confirmBooking = async () => {
+    let time24hour = convertTo24Hour(bookedTime);
+    console.log("bookedTime:", bookedTime);
+    console.log("time24hour:", time24hour);
+    let bookedDate = new Date(`1970-01-01T${time24hour}:00Z`);
+    let isoString = bookedDate.toISOString();
+    let endTime = new Date(`1970-01-01T${convertTo24Hour(bookedTime)}:00Z`);
+    endTime.setMinutes(endTime.getMinutes() + 45);
+    let endIsoString = endTime.toISOString();
+
+    try {
+      const response = await axios.post("/booking", {
+        //teacher id
+        //student id
+        //start time
+        //booking status
+        teacherId,
+        studentId: userData.id,
+        startDateTime: isoString,
+        endDateTime: endIsoString,
+      });
+      console.log(response.data);
+    } catch (e) {
+      console.log("Error: ", e);
+    }
+  };
+
   if (times.length > 0) {
     console.log("times", times);
     let s = new Date(times[0].startTime);
@@ -44,11 +96,19 @@ const TeacherTimes = ({ dayOfWeek, teacherId }: TeacherTimesProp) => {
       <>
         <div className="times">
           {arrayOfTimes.map((time, i) => {
-            return <TimeButtons key={i} time={time}></TimeButtons>;
+            return (
+              <TimeButtons
+                key={i}
+                time={time}
+                bookHandler={bookHandler}
+              ></TimeButtons>
+            );
           })}
         </div>
         <div className="book-btn-container">
-          <button className="book-btn">Book</button>
+          <button className="book-btn" onClick={confirmBooking}>
+            Book
+          </button>
         </div>
       </>
     );

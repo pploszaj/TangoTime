@@ -1,6 +1,4 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import StudentNavBar from "../components/StudentNavBar";
 import TeachersList from "../components/TeachersList";
 import { useQuery } from "@tanstack/react-query";
 import fetchTeachers from '../client/fetchTeachers'

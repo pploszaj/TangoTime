@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../client/styles.scss";
 import axios from "axios";
-import { response } from "express";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../client/UserContext";
 
 export const Login = () => {
   // const [isLogin, setLogin] = useState<boolean>(true);
@@ -13,6 +13,7 @@ export const Login = () => {
   // const [phone, setPhone] = useState<string>("");
   // const [role, setRole] = useState<string>('STUDENT')
   const navigate = useNavigate();
+  const { userData, updateUserData } = useContext(UserContext);
 
   const handleLogin: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
@@ -22,8 +23,16 @@ export const Login = () => {
         email,
         password,
       });
-      console.log(response);
+      console.log('this is response', response);
       if (response.status === 200) {
+        updateUserData({
+          id: response.data.id,
+          firstName: response.data.firstName,
+          lastName: response.data.lastName,
+          email: response.data.email,
+          phone: response.data.phone,
+          role: response.data.role
+        })
         navigate("/studenthome");
       }
     } catch (error) {
