@@ -118,13 +118,14 @@ const authenicationController = {
 
   bookLesson: async (req: Request, res:Response, next:NextFunction) => {
     console.log('in the bookLesson middleware');
-    const {studentId, teacherId, startDateTime, endDateTime } = req.body;
+    const {studentId, teacherId, startDateTime, endDateTime, date } = req.body;
 
     try {
       const response = await prisma.booking.create({
         data: {
           startDateTime,
           endDateTime,
+          date,
           student: {
             connect: { id: studentId },
           },
@@ -138,7 +139,8 @@ const authenicationController = {
       console.log('Error: ', error)
     }
 
-  }
+  },
+  
 };
 
 export default authenicationController;

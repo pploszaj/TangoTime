@@ -6,9 +6,10 @@ import { UserContext } from "../client/UserContext";
 type TeacherTimesProp = {
   dayOfWeek: string;
   teacherId: string | undefined;
+  date: Date;
 };
 
-const TeacherTimes = ({ dayOfWeek, teacherId }: TeacherTimesProp) => {
+const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
   const [times, setTimes] = useState<any>([]);
   const [bookedTime, setBookedTime] = useState("");
   const { userData } = useContext(UserContext);
@@ -38,19 +39,14 @@ const TeacherTimes = ({ dayOfWeek, teacherId }: TeacherTimesProp) => {
   function convertTo24Hour(time: string) {
     let [hours, minutes] = time.split(/[:\s]/);
     let period = time.match(/AM|PM/)?.[0];
-  
+
     if (period === "PM" && hours !== "12") {
       hours = (parseInt(hours) + 12).toString();
     } else if (period === "AM" && hours === "12") {
       hours = "00";
     }
-  
     return `${hours}:${minutes}`;
   }
-
-  // let timeString = "02:30 PM";
-  // let time24Hour = convertTo24Hour(timeString);
-  // console.log(time24Hour); // Output: 14:30
 
   const confirmBooking = async () => {
     let time24hour = convertTo24Hour(bookedTime);
@@ -64,16 +60,15 @@ const TeacherTimes = ({ dayOfWeek, teacherId }: TeacherTimesProp) => {
 
     try {
       const response = await axios.post("/booking", {
-        //teacher id
-        //student id
-        //start time
-        //booking status
         teacherId,
         studentId: userData.id,
+        date,
         startDateTime: isoString,
         endDateTime: endIsoString,
       });
       console.log(response.data);
+
+      
     } catch (e) {
       console.log("Error: ", e);
     }

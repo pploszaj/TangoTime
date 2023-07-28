@@ -11,6 +11,7 @@ const TeacherCalendar = () => {
   const { id } = useParams();
 
   const handleDateChange = (currDate: any) => {
+    console.log(currDate)
     setDate(currDate);
 
     const dayOfWeek = currDate.getDay();
@@ -38,7 +39,7 @@ const TeacherCalendar = () => {
           className="calendar"
         />
       </div>
-      {day && <TeacherTimes dayOfWeek={day} teacherId={id} />}
+      {day && <TeacherTimes dayOfWeek={day} teacherId={id} date={date}/>}
     </>
   );
 };

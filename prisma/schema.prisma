@@ -38,6 +38,7 @@ model Availability {
 model Booking {
   bookingId String @id @default(uuid())
   createdAt DateTime @default(now())
+  date DateTime
   startDateTime DateTime
   endDateTime DateTime
   bookingStatus BookingStatus @default(CONFIRMED)
