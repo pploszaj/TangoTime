@@ -20,6 +20,7 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
         const response = await axios.post("/getTimes", {
           teacherId,
           dayOfWeek,
+          date
         });
 
         console.log("response: ", response.data);

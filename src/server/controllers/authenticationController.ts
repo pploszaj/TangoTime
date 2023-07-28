@@ -116,6 +116,21 @@ const authenicationController = {
     }
   },
 
+  validateBooking: async (req: Request, res:Response, next:NextFunction) => {
+    const { date }  = req.body;
+    try {
+      const response = await prisma.booking.findMany({
+        where: {
+          date
+        }
+      })
+      console.log('these are bookings', response)
+      return next()
+    } catch (e) {
+      console.log('Error: ', e)
+    }
+  },
+
   bookLesson: async (req: Request, res:Response, next:NextFunction) => {
     console.log('in the bookLesson middleware');
     const {studentId, teacherId, startDateTime, endDateTime, date } = req.body;
