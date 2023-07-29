@@ -9,7 +9,7 @@ const TeacherBooking = () => {
   return (
     <div className='booking-page-container'>
         {/* <h2>Teacher ID: {id}</h2> */}
-        <TeacherCalendar/>
+        <TeacherCalendar />
     </div>
   )
 }

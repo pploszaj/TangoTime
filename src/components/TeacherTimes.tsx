@@ -14,6 +14,7 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
   const [previouslyBooked, setpreviouslyBooked] = useState<any>([]);
   const [bookedTime, setBookedTime] = useState("");
   const { userData } = useContext(UserContext);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   useEffect(() => {
     console.log("this is date selected from calendar: ", date);
@@ -51,7 +52,7 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
     setBookedTime(event.target.value);
   };
 
-  function convertTo24Hour(time: string) {
+  const convertTo24Hour = (time: string) => {
     let [hours, minutes] = time.split(/[:\s]/);
     let period = time.match(/AM|PM/)?.[0];
 
@@ -61,13 +62,14 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
       hours = "00";
     }
     return `${hours}:${minutes}`;
-  }
+  };
+
+  const modalHandler = () => {
+    setShowModal(false);
+  };
 
   const isSlotFree = (slot: string) => {
     for (let booking of previouslyBooked) {
-      // let time = new Date(booking.startDateTime);
-      // let timeString = time.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
-      // console.log('this is timeString of booked time: ', timeString)
       let date = new Date(booking.startDateTime);
 
       let hours: number | string = date.getUTCHours();
@@ -81,7 +83,7 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
 
       let timeString = hours + ":" + minutes + " " + suffix;
 
-      console.log(timeString); // Outputs "02:30 PM"
+      console.log(timeString);
 
       console.log(timeString);
       console.log("slot: ", slot);
@@ -104,10 +106,6 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
 
     try {
       const response = await axios.post("/booking", {
-        //teacher id
-        //student id
-        //start time
-        //booking status
         teacherId,
         studentId: userData.id,
         date,
@@ -115,13 +113,13 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
         endDateTime: endIsoString,
       });
       console.log(response.data);
+      setShowModal(true);
     } catch (e) {
       console.log("Error: ", e);
     }
   };
 
   if (times.length > 0) {
-    //console.log("times", times);
     const arrayOfTimes = [];
     let s = new Date(times[0].startTime);
     let e = new Date(times[0].endTime);
@@ -153,6 +151,15 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
             Book
           </button>
         </div>
+        {showModal && (
+          <div className="modal-container">
+            <div className="modal">
+              <h1>Booking Confirmed!</h1>
+              <p>One lesson at {bookedTime} with teacher name</p>
+              <button onClick={modalHandler} className='modal-btn'>Done</button>
+            </div>
+          </div>
+        )}
       </>
     );
   } else return null;
