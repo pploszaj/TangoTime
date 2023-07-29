@@ -116,7 +116,7 @@ const authenicationController = {
     }
   },
 
-  validateBooking: async (req: Request, res:Response, next:NextFunction) => {
+  getBookings: async (req: Request, res:Response, next:NextFunction) => {
     const { date }  = req.body;
     try {
       const response = await prisma.booking.findMany({
@@ -125,6 +125,7 @@ const authenicationController = {
         }
       })
       console.log('these are bookings', response)
+      res.locals.bookings = response;
       return next()
     } catch (e) {
       console.log('Error: ', e)

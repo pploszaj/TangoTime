@@ -12,7 +12,7 @@ const TeacherCalendar = () => {
 
   const handleDateChange = (currDate: any) => {
     console.log(currDate)
-    setDate(currDate);
+    setDate(currDate.toISOString());
 
     const dayOfWeek = currDate.getDay();
     let dayName;

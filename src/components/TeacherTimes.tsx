@@ -15,12 +15,12 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
   const { userData } = useContext(UserContext);
 
   useEffect(() => {
+    console.log('this is date selected from calendar: ', date)
     const getTimes = async () => {
       try {
         const response = await axios.post("/getTimes", {
           teacherId,
           dayOfWeek,
-          date
         });
 
         console.log("response: ", response.data);
@@ -30,8 +30,21 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
       }
     };
 
+    const getBookings = async () => {
+      try {
+        const response = await axios.post('/getBookings', {
+          date
+        });
+        console.log('response for getBookings: ', response.data)
+
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
     getTimes();
-  }, [dayOfWeek]);
+    getBookings();
+  }, [date]);
 
   const bookHandler = (event: any) => {
     setBookedTime(event.target.value);
@@ -61,6 +74,10 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
 
     try {
       const response = await axios.post("/booking", {
+        //teacher id
+        //student id
+        //start time
+        //booking status
         teacherId,
         studentId: userData.id,
         date,
@@ -76,11 +93,11 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
   };
 
   if (times.length > 0) {
-    console.log("times", times);
+    //console.log("times", times);
+    const arrayOfTimes = [];
     let s = new Date(times[0].startTime);
     let e = new Date(times[0].endTime);
     console.log(s.toTimeString().slice(0, 5));
-    const arrayOfTimes = [];
     while (s < e) {
       arrayOfTimes.push(
         s.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })

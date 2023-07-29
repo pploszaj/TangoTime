@@ -22,8 +22,12 @@ app.get('/teachers', authenticationController.findTeachers, (req,res) => {
     res.json(res.locals.teachers)
 })
 
-app.post('/getTimes', authenticationController.getTimes, authenticationController.validateBooking, (req,res) => {
+app.post('/getTimes', authenticationController.getTimes, (req,res) => {
     res.json(res.locals.times)
+})
+
+app.post('/getBookings', authenticationController.getBookings, (req,res) => {
+    res.json(res.locals.bookings)
 })
 
 app.post('/booking', authenticationController.bookLesson, (req,res) => {
