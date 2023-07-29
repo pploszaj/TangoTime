@@ -11,11 +11,12 @@ type TeacherTimesProp = {
 
 const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
   const [times, setTimes] = useState<any>([]);
+  const [previouslyBooked, setpreviouslyBooked] = useState<any>([]);
   const [bookedTime, setBookedTime] = useState("");
   const { userData } = useContext(UserContext);
 
   useEffect(() => {
-    console.log('this is date selected from calendar: ', date)
+    console.log("this is date selected from calendar: ", date);
     const getTimes = async () => {
       try {
         const response = await axios.post("/getTimes", {
@@ -32,15 +33,15 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
 
     const getBookings = async () => {
       try {
-        const response = await axios.post('/getBookings', {
-          date
+        const response = await axios.post("/getBookings", {
+          date,
         });
-        console.log('response for getBookings: ', response.data)
-
+        console.log("response for getBookings: ", response.data);
+        setpreviouslyBooked(response.data);
       } catch (e) {
         console.log(e);
       }
-    }
+    };
 
     getTimes();
     getBookings();
@@ -61,6 +62,35 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
     }
     return `${hours}:${minutes}`;
   }
+
+  const isSlotFree = (slot: string) => {
+    for (let booking of previouslyBooked) {
+      // let time = new Date(booking.startDateTime);
+      // let timeString = time.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
+      // console.log('this is timeString of booked time: ', timeString)
+      let date = new Date(booking.startDateTime);
+
+      let hours: number | string = date.getUTCHours();
+      let minutes: number | string = date.getUTCMinutes();
+
+      let suffix = hours >= 12 ? "PM" : "AM";
+      hours = hours % 12;
+      hours = hours ? hours : 12;
+      hours = hours.toString().padStart(2, "0"); // Add leading zero if needed
+      minutes = minutes.toString().padStart(2, "0"); // Add leading zero if needed
+
+      let timeString = hours + ":" + minutes + " " + suffix;
+
+      console.log(timeString); // Outputs "02:30 PM"
+
+      console.log(timeString);
+      console.log("slot: ", slot);
+      console.log("timeString: ", timeString);
+      console.log(timeString === slot);
+      if (timeString === slot) return false;
+    }
+    return true;
+  };
 
   const confirmBooking = async () => {
     let time24hour = convertTo24Hour(bookedTime);
@@ -85,8 +115,6 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
         endDateTime: endIsoString,
       });
       console.log(response.data);
-
-      
     } catch (e) {
       console.log("Error: ", e);
     }
@@ -109,13 +137,15 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
       <>
         <div className="times">
           {arrayOfTimes.map((time, i) => {
-            return (
-              <TimeButtons
-                key={i}
-                time={time}
-                bookHandler={bookHandler}
-              ></TimeButtons>
-            );
+            if (isSlotFree(time)) {
+              return (
+                <TimeButtons
+                  key={i}
+                  time={time}
+                  bookHandler={bookHandler}
+                ></TimeButtons>
+              );
+            } else return null;
           })}
         </div>
         <div className="book-btn-container">
