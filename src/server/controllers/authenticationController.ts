@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
+import bcrypt from 'bcrypt';
 
 const authenicationController = {
   createUser: async (req: Request, res: Response, next: NextFunction) => {
@@ -8,12 +9,14 @@ const authenicationController = {
     const { firstName, lastName, email, password, phone, role } =
       req.body;
     try {
+      const salt = await bcrypt.genSalt();
+      const hashedPassword = await bcrypt.hash(password, salt);
       const user = await prisma.user.create({
         data: {
           firstName,
           lastName,
           email,
-          password,
+          password: hashedPassword,
           phone,
           role,
         },
@@ -30,15 +33,21 @@ const authenicationController = {
     try {
       const user = await prisma.user.findUnique({
         where: {
-          email_password: {
-            email,
-            password
+          email
           }
-        }
       })
       console.log('found user', user)
-      res.locals.userData = user
-      return next()
+      if(user){
+        bcrypt.compare(password, user.password, (err, isMatch) => {
+          if(err) console.log(err)
+          else if (!isMatch) console.log('Password does not match')
+          else {
+            console.log('found user');
+            res.locals.userData = user;
+            return next();
+          }
+        })
+      }
     }
     catch (error) {
       console.log(error);

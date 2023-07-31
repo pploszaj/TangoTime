@@ -6,7 +6,6 @@ app.use(express.json());
 const port = 3000;
 
 app.post('/signup', authenticationController.createUser, (req,res) => {
-    console.log(res.locals.userid)
     res.json(res.locals.userid)
 })
 
