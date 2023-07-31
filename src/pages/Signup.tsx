@@ -52,6 +52,10 @@ export const Signup = () => {
   return (
     <div className="signup-form-container">
       <form className="form" onSubmit={handleSignup}>
+        <input type='file' id="upload" style={{display: 'none'}}/>
+        <label htmlFor="upload">
+          <img src="https://www.powertrafic.fr/wp-content/uploads/2023/04/image-ia-exemple.png" />
+        </label>
         <label htmlFor="firstName"></label>
         <input
           id="firstName"

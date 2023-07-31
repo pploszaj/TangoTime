@@ -100,6 +100,19 @@ html, body, #root{
     gap: .25rem;
 }
 
+.form label img {
+    border-radius: 50%;
+    cursor: pointer;
+    height: 4rem;
+    height: 11rem;
+    width: 11rem;
+    object-fit: cover;
+    transition: filter .5s;
+}
+
+.form label img:hover{
+    filter: grayscale(80%);
+}
 .form input{
     width: 14rem;
     height: 2.5rem;
