@@ -15,37 +15,58 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
   const [bookedTime, setBookedTime] = useState("");
   const { userData } = useContext(UserContext);
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [isLoading, setisLoading] = useState<boolean>(true);
 
   useEffect(() => {
     console.log("this is date selected from calendar: ", date);
-    const getTimes = async () => {
-      try {
-        const response = await axios.post("/getTimes", {
-          teacherId,
-          dayOfWeek,
-        });
+    // const getTimes = async () => {
+    //   try {
+    //     const response = await axios.post("/getTimes", {
+    //       teacherId,
+    //       dayOfWeek,
+    //     });
 
-        console.log("response: ", response.data);
-        setTimes(response.data);
+    //     console.log("response: ", response.data);
+    //     setTimes(response.data);
+    //   } catch (e) {
+    //     console.log("Error fetching times ", e);
+    //   }
+    // };
+
+    // const getBookings = async () => {
+    //   try {
+    //     const response = await axios.post("/getBookings", {
+    //       date,
+    //     });
+    //     console.log("response for getBookings: ", response.data);
+    //     setpreviouslyBooked(response.data);
+    //   } catch (e) {
+    //     console.log(e);
+    //   }
+    // };
+
+    const fetchData = async () => {
+      try {
+        const [getTimes, getBookings] = await Promise.all([
+          axios.post("/getTimes", {
+            teacherId,
+            dayOfWeek,
+          }),
+          axios.post("/getBookings", {
+            date,
+          }),
+        ]);
+
+        setTimes(getTimes.data);
+        setpreviouslyBooked(getBookings.data);
       } catch (e) {
-        console.log("Error fetching times ", e);
+        console.log("error fetching data: ", e);
       }
     };
-
-    const getBookings = async () => {
-      try {
-        const response = await axios.post("/getBookings", {
-          date,
-        });
-        console.log("response for getBookings: ", response.data);
-        setpreviouslyBooked(response.data);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-
-    getTimes();
-    getBookings();
+    // getTimes();
+    // getBookings();
+    fetchData();
+    setisLoading(false);
   }, [date]);
 
   const bookHandler = (event: any) => {
@@ -133,30 +154,39 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
 
     return (
       <>
-        <div className="times">
-          {arrayOfTimes.map((time, i) => {
-            if (isSlotFree(time)) {
-              return (
-                <TimeButtons
-                  key={i}
-                  time={time}
-                  bookHandler={bookHandler}
-                ></TimeButtons>
-              );
-            } else return null;
-          })}
-        </div>
-        <div className="book-btn-container">
-          <button className="book-btn" onClick={confirmBooking}>
-            Book
-          </button>
-        </div>
+        {isLoading ? (
+          <h1 className="loading">Loading...</h1>
+        ) : (
+          <>
+            <div className="times">
+              {arrayOfTimes.map((time, i) => {
+                if (isSlotFree(time)) {
+                  return (
+                    <TimeButtons
+                      key={i}
+                      time={time}
+                      bookHandler={bookHandler}
+                    ></TimeButtons>
+                  );
+                } else return null;
+              })}
+            </div>
+
+            <div className="book-btn-container">
+              <button className="book-btn" onClick={confirmBooking}>
+                Book
+              </button>
+            </div>
+          </>
+        )}
         {showModal && (
           <div className="modal-container">
             <div className="modal">
               <h1>Booking Confirmed!</h1>
               <p>One lesson at {bookedTime} with teacher name</p>
-              <button onClick={modalHandler} className='modal-btn'>Done</button>
+              <button onClick={modalHandler} className="modal-btn">
+                Done
+              </button>
             </div>
           </div>
         )}
