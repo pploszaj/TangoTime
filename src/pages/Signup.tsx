@@ -10,6 +10,7 @@ export const Signup = () => {
   const [phone, setPhone] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [image,setImage] = useState('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png');
   const navigate = useNavigate();
   const { userData, updateUserData } = useContext(UserContext);
 
@@ -49,12 +50,16 @@ export const Signup = () => {
     //redirect
   };
 
+  const uploadHandler = (event: any) => {
+    setImage(URL.createObjectURL(event?.target.files[0]))
+  }
+
   return (
     <div className="signup-form-container">
       <form className="form" onSubmit={handleSignup}>
-        <input type='file' id="upload" style={{display: 'none'}}/>
+        <input type='file' id="upload" style={{display: 'none'}} onChange={uploadHandler}/>
         <label htmlFor="upload">
-          <img src="https://www.powertrafic.fr/wp-content/uploads/2023/04/image-ia-exemple.png" />
+          <img src={image} />
         </label>
         <label htmlFor="firstName"></label>
         <input
