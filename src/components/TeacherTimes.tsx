@@ -192,7 +192,7 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
         )}
       </>
     );
-  } else return null;
+  } else return <h1>No available times</h1>;
 };
 
 export default TeacherTimes;

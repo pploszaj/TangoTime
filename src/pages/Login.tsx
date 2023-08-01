@@ -23,7 +23,7 @@ export const Login = () => {
         email,
         password,
       });
-      console.log('this is response', response);
+      console.log("this is response", response);
       if (response.status === 200) {
         updateUserData({
           id: response.data.id,
@@ -31,8 +31,8 @@ export const Login = () => {
           lastName: response.data.lastName,
           email: response.data.email,
           phone: response.data.phone,
-          role: response.data.role
-        })
+          role: response.data.role,
+        });
         navigate("/studenthome");
       }
     } catch (error) {
@@ -45,36 +45,62 @@ export const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <form className="form" onSubmit={handleLogin}>
-        <label htmlFor="loginEmail"></label>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          required
-          onChange={(e) => setEmail(e.target.value)}
-        ></input>
-        <label htmlFor="loginPassword"></label>
-        <input
-          type="password"
-          value={password}
-          placeholder="Password"
-          required
-          onChange={(e) => setPassword(e.target.value)}
-        ></input>
-        <button className="login-btn" type="submit">
-          Login
-        </button>
-        <p>
-          Don't have an account?{" "}
-          <span className="signup-link" onClick={() => navigate("/role")}>
+    <div className="login-page">
+      {/* <h1 className="tango-time"><span>Tango</span>Time</h1> */}
+      <div className="login-container">
+        <form className="form" onSubmit={handleLogin}>
+          <h1>Lorem Ipsum</h1>
+          <p>
+          Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
+          </p>
+          <label htmlFor="loginEmail"></label>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          ></input>
+          <label htmlFor="loginPassword"></label>
+          <input
+            type="password"
+            value={password}
+            placeholder="Password"
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          ></input>
+          <button className="login-btn" type="submit">
+            Log in
+          </button>
+          <div className="or">
+            <hr></hr>
+            Or
+            <hr></hr>
+          </div>
+          <button className="signup-btn">
             Sign up
-          </span>
-        </p>
-      </form>
+          </button>
+        </form>
+      </div>
+      <div className="login-img">
+        <img
+          src="https://s3-alpha-sig.figma.com/img/f7e7/f99f/14ce2e150a45e7e5ecced39cd3d1108b?Expires=1691971200&Signature=iPEj4LgfUCp3o38pBo9G2uZ-jXLdpCrSneI8Rzig-i3ASRO2H7fAOdxrOEHZ34L-bZJW3i7sXwV7Fr5IIB0Hdg2u5hhQbVI4Cad0mfxn~X0BFA9AGjYHtaqQTbHgdkbhG6SO1WyOm1EF4AdrpAcEPJphXIOIokrwRKo03D1rFuTf35-VKWM-U-m8feDrnFKXqIEI0NLAay791C7bp9bat1CpV40ay2XMMWMVk~B9XXrfDHFmNMj8uDeunvjHWp1FuOqBVoHKqKZDPfy~5lcDqfKaDly7JmERvfrjcPpJk3vJ59KRsWe62IxZTQj8soOOUTpL54BwmmbCttotau6jig__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+          alt=""
+        />
+      </div>
     </div>
   );
 };
 
 export default Login;
+
+// old stuff
+
+/*
+<p>
+            Don't have an account?{" "}
+            <span className="signup-link" onClick={() => navigate("/role")}>
+              Sign up
+            </span>
+          </p>
+*/
