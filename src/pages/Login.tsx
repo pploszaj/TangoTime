@@ -77,7 +77,7 @@ export const Login = () => {
             Or
             <hr></hr>
           </div>
-          <button className="signup-btn">
+          <button className="signup-btn" onClick={() => navigate('/role')}>
             Sign up
           </button>
         </form>
