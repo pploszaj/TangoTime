@@ -13,12 +13,13 @@ export const Signup = () => {
   const [phone, setPhone] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [image,setImage] = useState<File | any>('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png');
+  const [image,setImage] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string>('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png')
   const navigate = useNavigate();
   const { userData, updateUserData } = useContext(UserContext);
 
   const uploadImage = () => {
-    if(image === 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png') return;
+    if(image === null) return;
     //makes reference to image
     const imageRef = ref(storage, `avatars/${image.name + v4()}`)
     uploadBytes(imageRef, image).then(() => {
@@ -67,17 +68,17 @@ export const Signup = () => {
   };
 
   const uploadHandler = (event: any) => {
-    setImage(event.target.files[0])
+    setImage(event.target.files[0]);
+    setImagePreview(URL.createObjectURL(event.target.files[0]));
   }
 
-  //URL.createObjectURL()
 
   return (
     <div className="signup-form-container">
       <form className="form" onSubmit={handleSignup}>
         <input type='file' id="upload" style={{display: 'none'}} onChange={uploadHandler}/>
         <label htmlFor="upload">
-          <img src={image} />
+          <img src={imagePreview} />
         </label>
         <label htmlFor="firstName"></label>
         <input
