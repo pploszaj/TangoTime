@@ -3,9 +3,9 @@ import { UserContext } from "../client/UserContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import TeacherSignup from "./TeacherSignup";
-import { storage } from '../firebase'
-import { ref, uploadBytes } from 'firebase/storage'
-import {v4} from 'uuid';
+import { storage } from "../firebase";
+import { ref, uploadBytes } from "firebase/storage";
+import { v4 } from "uuid";
 
 export const Signup = () => {
   const [firstName, setFirstName] = useState<string>("");
@@ -13,20 +13,21 @@ export const Signup = () => {
   const [phone, setPhone] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [image,setImage] = useState<File | null>(null);
-  const [imagePreview, setImagePreview] = useState<string>('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png')
+  const [image, setImage] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string>(
+    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+  );
   const navigate = useNavigate();
   const { userData, updateUserData } = useContext(UserContext);
 
   const uploadImage = () => {
-    if(image === null) return;
+    if (image === null) return;
     //makes reference to image
-    const imageRef = ref(storage, `avatars/${image.name + v4()}`)
+    const imageRef = ref(storage, `avatars/${image.name + v4()}`);
     uploadBytes(imageRef, image).then(() => {
-      alert('Image uploaded');
-    })
-
-  }
+      alert("Image uploaded");
+    });
+  };
 
   const handleSignup = async (e: any) => {
     e.preventDefault();
@@ -68,15 +69,23 @@ export const Signup = () => {
   };
 
   const uploadHandler = (event: any) => {
-    setImage(event.target.files[0]);
-    setImagePreview(URL.createObjectURL(event.target.files[0]));
-  }
-
+    const file = event.target.files[0];
+    if (file && file.type === "image/jpeg") {
+      setImage(file);
+      setImagePreview(URL.createObjectURL(file));
+    } 
+  };
 
   return (
     <div className="signup-form-container">
       <form className="form" onSubmit={handleSignup}>
-        <input type='file' id="upload" style={{display: 'none'}} onChange={uploadHandler}/>
+        <input
+          type="file"
+          id="upload"
+          style={{ display: "none" }}
+          onChange={uploadHandler}
+          accept="image/jpeg"
+        />
         <label htmlFor="upload">
           <img src={imagePreview} />
         </label>
