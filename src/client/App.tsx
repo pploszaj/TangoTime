@@ -1,6 +1,7 @@
 import React, { useState, lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
+import Loader from '../components/Loader';
 // import Login from "../pages/Login";
 // import SelectRole from "../pages/SelectRole";
 // import Signup from "../pages/Signup";
@@ -46,7 +47,7 @@ function App() {
     <UserContext.Provider value={{ userData, updateUserData }}>
       <Router>
         <QueryClientProvider client={client}>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader/>}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/signup" element={<Signup />} />
