@@ -2,13 +2,6 @@ import React, { useState, lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import Loader from '../components/Loader';
-// import Login from "../pages/Login";
-// import SelectRole from "../pages/SelectRole";
-// import Signup from "../pages/Signup";
-// import StudentHome from "../pages/StudentHome";
-// import TeacherSignup from "../pages/TeacherSignup";
-// import TeacherHome from "../pages/TeacherHome";
-// import TeacherBooking from "../pages/TeacherBooking";
 import { UserContext } from "./UserContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
