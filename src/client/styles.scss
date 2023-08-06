@@ -420,6 +420,7 @@ body,
   width: 8rem;
   border: 1px solid blue;
   border-radius: 15px;
+  cursor: pointer;
 }
 
 .modal-container {
@@ -430,6 +431,7 @@ body,
   justify-content: center;
   align-items: center;
   position: absolute;
+  backdrop-filter: brightness(40%) blur(2px);
 }
 
 .modal {
@@ -448,6 +450,16 @@ body,
 
 .modal-btn {
   font-family: "Lato", sans-serif;
+  background: transparent;
+  border: 1px solid rgb(196, 8, 8);
+  height: 2rem;
+  width: 5rem;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover{
+    background-color: rgba(196, 8, 8, 0.607);;
+  }
 }
 
 .loading {
