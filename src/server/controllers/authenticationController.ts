@@ -159,6 +159,9 @@ const authenicationController = {
         },
       }
     })
+
+      res.locals.newBooking = response;
+
       return next();
     } catch(error) {
       console.log('Error: ', error)

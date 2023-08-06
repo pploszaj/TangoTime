@@ -30,7 +30,8 @@ app.post('/getBookings', authenticationController.getBookings, (req,res) => {
 })
 
 app.post('/booking', authenticationController.bookLesson, (req,res) => {
-    res.send('Booking Successful')
+    console.log('Booking Successful!')
+    res.json(res.locals.newBooking);
 })
 
 
