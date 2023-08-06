@@ -9,6 +9,16 @@ type TeacherTimesProp = {
   date: Date;
 };
 
+// type BookingInfo = {
+//   bookingId string,
+//   createdAt Date,
+//   date Date,
+//   startDateTime Date,
+//   endDateTime Date,
+//   studentId string,
+//   teacherId string
+// };
+
 const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
   const [times, setTimes] = useState<any>([]);
   const [previouslyBooked, setpreviouslyBooked] = useState<any>([]);
@@ -16,37 +26,9 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
   const { userData } = useContext(UserContext);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [isLoading, setisLoading] = useState<boolean>(true);
-  const [bookingInfo, setBookingInfo] = useState({});
-
+  const [bookingInfo, setBookingInfo] = useState<any>({});
 
   useEffect(() => {
-    console.log("this is date selected from calendar: ", date);
-    // const getTimes = async () => {
-    //   try {
-    //     const response = await axios.post("/getTimes", {
-    //       teacherId,
-    //       dayOfWeek,
-    //     });
-
-    //     console.log("response: ", response.data);
-    //     setTimes(response.data);
-    //   } catch (e) {
-    //     console.log("Error fetching times ", e);
-    //   }
-    // };
-
-    // const getBookings = async () => {
-    //   try {
-    //     const response = await axios.post("/getBookings", {
-    //       date,
-    //     });
-    //     console.log("response for getBookings: ", response.data);
-    //     setpreviouslyBooked(response.data);
-    //   } catch (e) {
-    //     console.log(e);
-    //   }
-    // };
-
     const fetchData = async () => {
       try {
         const [getTimes, getBookings] = await Promise.all([
@@ -65,8 +47,7 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
         console.log("error fetching data: ", e);
       }
     };
-    // getTimes();
-    // getBookings();
+
     fetchData();
     setisLoading(false);
   }, [date]);
@@ -115,6 +96,17 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
       if (timeString === slot) return false;
     }
     return true;
+  };
+
+  const dateConverter = (date: string | Date): string => {
+    let convertedDate;
+    if (typeof date === "string") {
+      let currDate = new Date(date);
+      convertedDate = currDate.toLocaleDateString("en-US");
+    } else {
+      convertedDate = date.toLocaleDateString("en-US");
+    }
+    return convertedDate;
   };
 
   const confirmBooking = async () => {
@@ -186,7 +178,11 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
           <div className="modal-container">
             <div className="modal">
               <h1>Booking Confirmed!</h1>
-              <p>One lesson at {bookedTime} with teacher name</p>
+              <h3>Confirmation Number: {bookingInfo.bookingId}</h3>
+              <p>
+                One lesson on <>{dateConverter(date)}</> at {bookedTime} with
+                teacher name
+              </p>
               <button onClick={modalHandler} className="modal-btn">
                 Done
               </button>
@@ -195,7 +191,7 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
         )}
       </>
     );
-  } else return <h1>No available times</h1>;
+  } else return null;
 };
 
 export default TeacherTimes;
