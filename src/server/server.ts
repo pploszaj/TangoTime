@@ -1,5 +1,6 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express from 'express';
 import authenticationController from './controllers/authenticationController'
+
 
 const app = express();
 app.use(express.json());

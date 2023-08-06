@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { DesktopTimePicker } from "@mui/x-date-pickers";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -27,9 +27,7 @@ const TeacherSignup = () => {
 
 
   const handleButton = async () => {
-    //fetch post request to save data to databse
-    //you can send all this data at once
-    //prisma.createMany on server side
+   
     const schedule = [
       {
         dayOfWeek: "Monday",

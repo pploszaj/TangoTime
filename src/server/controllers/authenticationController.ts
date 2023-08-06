@@ -1,7 +1,13 @@
 import { Request, Response, NextFunction } from "express";
 import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import twilio from 'twilio';
 import bcrypt from 'bcrypt';
+import dotenv from 'dotenv';
+dotenv.config();
+
+const prisma = new PrismaClient();
+
+const client = twilio(process.env.ACCOUNT_SID, process.env.AUTH_TOKEN)
 
 const authenicationController = {
   createUser: async (req: Request, res: Response, next: NextFunction) => {
@@ -168,6 +174,21 @@ const authenicationController = {
     }
 
   },
+
+  sendTextMessage: async (req: Request, res:Response, next: NextFunction) => {
+    //need teacher's phone number, date and time of booking, student's name
+    try {
+      const response = await client.messages.create({
+        to: '',
+        from: process.env.PHONE,
+        body: 'BOOKING CONFIRMATION:'
+      })
+      console.log(response.sid)
+      return next();
+    } catch(err){
+      console.error('Failed to send SMS: ', err)
+    }
+  }
   
 };
 

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import DatePicker from "react-datepicker";
 import { useParams } from "react-router-dom";
 import TeacherTimes from "./TeacherTimes";
 import Calendar from "react-calendar";

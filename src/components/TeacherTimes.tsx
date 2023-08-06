@@ -9,16 +9,6 @@ type TeacherTimesProp = {
   date: Date;
 };
 
-// type BookingInfo = {
-//   bookingId string,
-//   createdAt Date,
-//   date Date,
-//   startDateTime Date,
-//   endDateTime Date,
-//   studentId string,
-//   teacherId string
-// };
-
 const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
   const [times, setTimes] = useState<any>([]);
   const [previouslyBooked, setpreviouslyBooked] = useState<any>([]);
@@ -180,7 +170,7 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
               <h1>Booking Confirmed!</h1>
               <h3>Confirmation Number: {bookingInfo.bookingId}</h3>
               <p>
-                One lesson on <>{dateConverter(date)}</> at {bookedTime} with
+                One lesson on <b>{dateConverter(date)}</b> at <b>{bookedTime}</b> with
                 teacher name
               </p>
               <button onClick={modalHandler} className="modal-btn">
