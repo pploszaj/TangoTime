@@ -16,6 +16,8 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
   const { userData } = useContext(UserContext);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [isLoading, setisLoading] = useState<boolean>(true);
+  const [bookingInfo, setBookingInfo] = useState({});
+
 
   useEffect(() => {
     console.log("this is date selected from calendar: ", date);
@@ -134,6 +136,7 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
         endDateTime: endIsoString,
       });
       console.log(response.data);
+      setBookingInfo(response.data);
       setShowModal(true);
     } catch (e) {
       console.log("Error: ", e);

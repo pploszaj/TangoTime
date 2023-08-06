@@ -21,14 +21,14 @@ body,
   background: #f9f9f9;
 }
 
-.loader-container{
+.loader-container {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.loader{
+.loader {
   height: 100px;
   animation-name: spin;
   animation-duration: 2s;
@@ -423,9 +423,13 @@ body,
 }
 
 .modal-container {
+  height: 100vh;
+  width: 100vw;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  left: 25%;
-  top: 30%;
 }
 
 .modal {
