@@ -143,7 +143,7 @@ export const Signup = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         ></input>
-        {error && <p className="signup-error-message">The email address you entered is already associated with an existing account. If this is your email, please sign in. If not, try using another email address.</p>}
+        {error && <p className="error-message">The email address you entered is already associated with an existing account. If this is your email, please sign in. If not, try using another email address.</p>}
         <button className="login-btn" type="submit">
           Sign Up
         </button>

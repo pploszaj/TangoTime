@@ -59,6 +59,13 @@ const authenicationController = {
             return next();
           }
         })
+      } else {
+        const errObj = {
+          log: 'Error occurred in findUser controller: User not found',
+          status: 400,
+          message: { err: 'No account found with this email address.' },
+        };
+        return next(errObj);
       }
     }
     catch (error) {

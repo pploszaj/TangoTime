@@ -7,6 +7,7 @@ import { UserContext } from "../client/UserContext";
 export const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [loginError, setLoginError] = useState<boolean>(false);
   const navigate = useNavigate();
   const { userData, updateUserData } = useContext(UserContext);
 
@@ -20,6 +21,7 @@ export const Login = () => {
       });
       console.log("this is response", response);
       if (response.status === 200) {
+        setLoginError(false)
         updateUserData({
           id: response.data.id,
           firstName: response.data.firstName,
@@ -31,12 +33,9 @@ export const Login = () => {
         navigate("/studenthome");
       }
     } catch (error) {
-      //handle response
-
       console.log(error);
+      setLoginError(true);
     }
-    //clear all inputs
-    //redirect
   };
 
   return (
@@ -64,6 +63,7 @@ export const Login = () => {
             required
             onChange={(e) => setPassword(e.target.value)}
           ></input>
+          {loginError && <p className="error-message">The email and password you entered did not match our records. Please double-check and try again.</p>}
           <button className="login-btn" type="submit">
             Log in
           </button>

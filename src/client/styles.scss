@@ -241,15 +241,6 @@ body,
 
 .login-btn {
   cursor: pointer;
-  /* margin-top: 1rem;
-    width: 5rem;
-    background-color: inherit;
-    border: 1px solid black;
-    border-radius: 3px;
-    width: 5rem;
-    height: 1.5rem;
-    font-family: 'Lato', sans-serif;
-    */
   width: 100px;
   height: 30px;
   flex-shrink: 0;
@@ -283,7 +274,7 @@ body,
   height: 100%;
 }
 
-.signup-error-message {
+.error-message {
   color: #cb0d16 !important;
   margin-top: 0.3rem;
   margin-bottom: 0.3rem;
