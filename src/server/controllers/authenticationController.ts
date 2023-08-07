@@ -165,7 +165,8 @@ const authenicationController = {
         },
       },
       include: {
-        teacher: true
+        teacher: true,
+        student: true
       }
     })
 
@@ -180,11 +181,15 @@ const authenicationController = {
 
   sendTextMessage: async (req: Request, res:Response, next: NextFunction) => {
     //need teacher's phone number, date and time of booking, student's name
+    const {firstName, lastName } = res.locals.newBooking.student;
+    const {startDateTime, date} = res.locals.newBooking;
+    const {bookedTime} = req.body
+
     try {
       const response = await client.messages.create({
         to: res.locals.newBooking.teacher.phone,
         from: process.env.PHONE,
-        body: 'BOOKING CONFIRMATION'
+        body: `BOOKING CONFIRMATION - One lesson with ${firstName} ${lastName} on ${date.toLocaleDateString('en-US')} at ${bookedTime}`
       })
       console.log(response.sid)
       return next();

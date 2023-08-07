@@ -116,6 +116,7 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
         date,
         startDateTime: isoString,
         endDateTime: endIsoString,
+        bookedTime
       });
       console.log(response.data);
       setBookingInfo(response.data);
