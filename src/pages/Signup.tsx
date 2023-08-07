@@ -17,6 +17,7 @@ export const Signup = () => {
   const [imagePreview, setImagePreview] = useState<string>(
     "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
   );
+  const [error, setError] = useState<boolean>(false);
   const navigate = useNavigate();
   const { userData, updateUserData } = useContext(UserContext);
 
@@ -52,6 +53,7 @@ export const Signup = () => {
 
       //upload image to firebase
       uploadImage();
+      setError(false)
 
       if (userData.role === "TEACHER") {
         navigate("/teachersignup");
@@ -60,7 +62,8 @@ export const Signup = () => {
       }
     } catch (error) {
       //handle error
-      console.log(error);
+      console.log('catch block client side', error);
+      setError(true)
     }
 
     //make post request
@@ -81,6 +84,7 @@ export const Signup = () => {
       <form className="form" onSubmit={handleSignup}>
         <input
           type="file"
+          name="image"
           id="upload"
           style={{ display: "none" }}
           onChange={uploadHandler}
@@ -93,6 +97,7 @@ export const Signup = () => {
         <input
           id="firstName"
           type="text"
+          name="firstName"
           placeholder="First Name"
           required
           value={firstName}
@@ -102,6 +107,7 @@ export const Signup = () => {
         <input
           id="lastName"
           type="text"
+          name="lastName"
           placeholder="Last Name"
           required
           value={lastName}
@@ -111,6 +117,7 @@ export const Signup = () => {
         <input
           id="email"
           type="email"
+          name="email"
           placeholder="Email"
           required
           value={email}
@@ -120,6 +127,7 @@ export const Signup = () => {
         <input
           id="phone"
           type="tel"
+          name="phone"
           value={phone}
           required
           placeholder="Phone Number"
@@ -130,10 +138,12 @@ export const Signup = () => {
           id="password"
           type="password"
           placeholder="Password"
+          name="password"
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         ></input>
+        {error && <p className="signup-error-message">The email address you entered is already associated with an existing account. If this is your email, please sign in. If not, try using another email address.</p>}
         <button className="login-btn" type="submit">
           Sign Up
         </button>
