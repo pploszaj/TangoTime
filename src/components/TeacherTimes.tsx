@@ -170,8 +170,7 @@ const TeacherTimes = ({ dayOfWeek, teacherId, date }: TeacherTimesProp) => {
               <h1>Booking Confirmed!</h1>
               <h3>Confirmation Number: {bookingInfo.bookingId}</h3>
               <p>
-                One lesson on <b>{dateConverter(date)}</b> at <b>{bookedTime}</b> with 
-                {bookingInfo.teacher.firstName} {bookingInfo.teacher.lastName}
+                One lesson on <b>{dateConverter(date)}</b> at <b>{bookedTime}</b> with {bookingInfo.teacher.firstName} {bookingInfo.teacher.lastName}
               </p>
               <button onClick={modalHandler} className="modal-btn">
                 Done
