@@ -21,7 +21,7 @@ export const Login = () => {
       });
       console.log("this is response", response);
       if (response.status === 200) {
-        setLoginError(false)
+        setLoginError(false);
         updateUserData({
           id: response.data.id,
           firstName: response.data.firstName,
@@ -43,9 +43,13 @@ export const Login = () => {
       {/* <h1 className="tango-time"><span>Tango</span>Time</h1> */}
       <div className="login-container">
         <form className="form" onSubmit={handleLogin}>
-          <h1>Welcome back!</h1>
+          <h1>Welcome!</h1>
           <p>
-          Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
+            If you're returning to our site, we can't wait to see you move on
+            the dance floor again. Simply log in below and let the rhythm take
+            over. If you're here for the first time, we're thrilled to welcome
+            you to our vibrant world of dance. Create an account and book a
+            lesson with one of our experienced professionals today!
           </p>
           <label htmlFor="loginEmail"></label>
           <input
@@ -63,7 +67,12 @@ export const Login = () => {
             required
             onChange={(e) => setPassword(e.target.value)}
           ></input>
-          {loginError && <p className="error-message">The email and password you entered did not match our records. Please double-check and try again.</p>}
+          {loginError && (
+            <p className="error-message">
+              The email and password you entered did not match our records.
+              Please double-check and try again.
+            </p>
+          )}
           <button className="login-btn" type="submit">
             Log in
           </button>
@@ -72,7 +81,7 @@ export const Login = () => {
             Or
             <hr></hr>
           </div>
-          <button className="signup-btn" onClick={() => navigate('/role')}>
+          <button className="signup-btn" onClick={() => navigate("/role")}>
             Sign up
           </button>
         </form>
