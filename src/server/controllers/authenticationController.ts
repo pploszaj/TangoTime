@@ -31,6 +31,12 @@ const authenicationController = {
       return next()
     } catch (error) {
       console.log(error);
+      const errObj = {
+        log: 'Error occurred in createUser controller',
+        status: 400,
+        message: { err: error },
+      };
+      return next(errObj);
     }
   },
 
@@ -57,6 +63,12 @@ const authenicationController = {
     }
     catch (error) {
       console.log(error);
+      const errObj = {
+        log: 'Error occurred in findUser controller',
+        status: 400,
+        message: { err: error },
+      };
+      return next(errObj);
     }
   },
 
@@ -87,8 +99,14 @@ const authenicationController = {
       res.locals.availabilities = result;
       return next()
     }
-    catch(err) {
-      console.log(err)
+    catch(error) {
+      console.log(error)
+      const errObj = {
+        log: 'Error occurred in updateSchedule controller',
+        status: 400,
+        message: { err: error },
+      };
+      return next(errObj);
     }
 
   },
@@ -104,8 +122,14 @@ const authenicationController = {
       console.log('response', response)
       res.locals.teachers = response
       return next()
-    } catch(e) {
-      console.log('Error: ', e)
+    } catch(error) {
+      console.log('Error: ', error)
+      const errObj = {
+        log: 'Error occurred in findTeachers controller',
+        status: 400,
+        message: { err: error },
+      };
+      return next(errObj);
     }
   },
 
@@ -126,8 +150,14 @@ const authenicationController = {
       console.log(response);
       res.locals.times = response
       return next();
-    } catch (e) {
-      console.log('Error getting times: ', e)
+    } catch (error) {
+      console.log('Error getting times: ', error)
+      const errObj = {
+        log: 'Error occurred in getTimes controller',
+        status: 400,
+        message: { err: error },
+      };
+      return next(errObj);
     }
   },
 
@@ -142,8 +172,14 @@ const authenicationController = {
       console.log('these are bookings', response)
       res.locals.bookings = response;
       return next()
-    } catch (e) {
-      console.log('Error: ', e)
+    } catch (error) {
+      console.log('Error: ', error)
+      const errObj = {
+        log: 'Error occurred in getBookings controller',
+        status: 400,
+        message: { err: error },
+      };
+      return next(errObj);
     }
   },
 
@@ -175,6 +211,12 @@ const authenicationController = {
       return next();
     } catch(error) {
       console.log('Error: ', error)
+      const errObj = {
+        log: 'Error occurred in bookLesson controller',
+        status: 400,
+        message: { err: error },
+      };
+      return next(errObj);
     }
 
   },
@@ -193,8 +235,14 @@ const authenicationController = {
       })
       console.log(response.sid)
       return next();
-    } catch(err){
-      console.error('Failed to send SMS: ', err)
+    } catch(error){
+      console.error('Failed to send SMS: ', error)
+      const errObj = {
+        log: 'Error occurred in sendTextMessage controller',
+        status: 400,
+        message: { err: error },
+      };
+      return next(errObj);
     }
   }
   
