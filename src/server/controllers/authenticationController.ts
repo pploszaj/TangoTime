@@ -182,9 +182,9 @@ const authenicationController = {
     //need teacher's phone number, date and time of booking, student's name
     try {
       const response = await client.messages.create({
-        to: '',
+        to: res.locals.newBooking.teacher.phone,
         from: process.env.PHONE,
-        body: 'BOOKING CONFIRMATION:'
+        body: 'BOOKING CONFIRMATION'
       })
       console.log(response.sid)
       return next();
