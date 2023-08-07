@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import authenticationController from './controllers/authenticationController'
 
 
@@ -35,7 +35,7 @@ app.post('/booking', authenticationController.bookLesson, authenticationControll
     res.json(res.locals.newBooking);
 })
 
-app.use((err, req, res, next) => {
+app.use((err:any, req: Request, res: Response, next: NextFunction) => {
     const defaultErr = {
       log: 'Express error handler caught unknown middleware error',
       status: 400,
