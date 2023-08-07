@@ -163,6 +163,9 @@ const authenicationController = {
           teacher: {
             connect: { id: teacherId },
         },
+      },
+      include: {
+        teacher: true
       }
     })
 
