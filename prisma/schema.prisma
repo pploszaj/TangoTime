@@ -16,6 +16,7 @@ model User {
   password String
   phone String 
   role Role
+  imageURL String
   availabilities Availability[]
   bookings Booking[] @relation("TeacherBooking")
   studentBookings Booking[] @relation("StudentBooking")

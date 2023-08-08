@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import TeacherSignup from "./TeacherSignup";
 import { storage } from "../firebase";
-import { ref, uploadBytes } from "firebase/storage";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { v4 } from "uuid";
 
 export const Signup = () => {
@@ -17,6 +17,7 @@ export const Signup = () => {
   const [imagePreview, setImagePreview] = useState<string>(
     "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
   );
+  const [imageURL, setImageURL] = useState<string>('');
   const [error, setError] = useState<boolean>(false);
   const navigate = useNavigate();
   const { userData, updateUserData } = useContext(UserContext);
@@ -27,7 +28,11 @@ export const Signup = () => {
     const imageRef = ref(storage, `avatars/${image.name + v4()}`);
     uploadBytes(imageRef, image).then(() => {
       alert("Image uploaded");
-    });
+      return getDownloadURL(imageRef);
+    })
+    .then(url => {
+      setImageURL(url);
+    })
   };
 
   const handleSignup = async (e: any) => {
@@ -40,6 +45,7 @@ export const Signup = () => {
         password,
         phone,
         role: userData.role,
+        imageURL
       });
       //save user data to context
       updateUserData({

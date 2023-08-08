@@ -12,7 +12,7 @@ const client = twilio(process.env.ACCOUNT_SID, process.env.AUTH_TOKEN)
 const authenicationController = {
   createUser: async (req: Request, res: Response, next: NextFunction) => {
     console.log('in the create user controller')
-    const { firstName, lastName, email, password, phone, role } =
+    const { firstName, lastName, email, password, phone, role, imageURL } =
       req.body;
     try {
       const salt = await bcrypt.genSalt();
@@ -25,6 +25,7 @@ const authenicationController = {
           password: hashedPassword,
           phone,
           role,
+          imageURL
         },
       });
       res.locals.userid = user.id;
