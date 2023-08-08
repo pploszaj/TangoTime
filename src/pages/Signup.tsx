@@ -6,6 +6,7 @@ import TeacherSignup from "./TeacherSignup";
 import { storage } from "../firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { v4 } from "uuid";
+import { urlToHttpOptions } from "url";
 
 export const Signup = () => {
   const [firstName, setFirstName] = useState<string>("");
@@ -17,27 +18,36 @@ export const Signup = () => {
   const [imagePreview, setImagePreview] = useState<string>(
     "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
   );
-  const [imageURL, setImageURL] = useState<string>('');
+  const [imageURL, setImageURL] = useState<string>("");
   const [error, setError] = useState<boolean>(false);
   const navigate = useNavigate();
   const { userData, updateUserData } = useContext(UserContext);
 
-  const uploadImage = () => {
-    if (image === null) return;
-    //makes reference to image
-    const imageRef = ref(storage, `avatars/${image.name + v4()}`);
-    uploadBytes(imageRef, image).then(() => {
-      alert("Image uploaded");
-      return getDownloadURL(imageRef);
-    })
-    .then(url => {
-      setImageURL(url);
-    })
+  const uploadImage = async () => {
+    return new Promise(async (resolve, reject) => {
+      if (image === null) {
+        reject("No image provided");
+        return;
+      }
+      const imageRef = ref(storage, `avatars/${image?.name + v4()}`);
+      try {
+        await uploadBytes(imageRef, image);
+        alert("Image uploaded");
+        const url = await getDownloadURL(imageRef);
+        console.log("this is url of image: ", url);
+        setImageURL(url);
+        resolve(url);
+      } catch (error) {
+        reject(error);
+      }
+    });
   };
 
   const handleSignup = async (e: any) => {
     e.preventDefault();
     try {
+      const url = await uploadImage();
+      console.log("this is imageURL in try block", url);
       const response = await axios.post("/signup", {
         firstName,
         lastName,
@@ -45,7 +55,7 @@ export const Signup = () => {
         password,
         phone,
         role: userData.role,
-        imageURL
+        imageURL: url,
       });
       //save user data to context
       updateUserData({
@@ -57,9 +67,7 @@ export const Signup = () => {
         id: response.data,
       });
 
-      //upload image to firebase
-      uploadImage();
-      setError(false)
+      setError(false);
 
       if (userData.role === "TEACHER") {
         navigate("/teachersignup");
@@ -68,8 +76,8 @@ export const Signup = () => {
       }
     } catch (error) {
       //handle error
-      console.log('catch block client side', error);
-      setError(true)
+      console.log("catch block client side", error);
+      setError(true);
     }
 
     //make post request
@@ -82,7 +90,7 @@ export const Signup = () => {
     if (file && file.type === "image/jpeg") {
       setImage(file);
       setImagePreview(URL.createObjectURL(file));
-    } 
+    }
   };
 
   return (
@@ -149,7 +157,13 @@ export const Signup = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         ></input>
-        {error && <p className="error-message">The email address you entered is already associated with an existing account. If this is your email, please sign in. If not, try using another email address.</p>}
+        {error && (
+          <p className="error-message">
+            The email address you entered is already associated with an existing
+            account. If this is your email, please sign in. If not, try using
+            another email address.
+          </p>
+        )}
         <button className="login-btn" type="submit">
           Sign Up
         </button>

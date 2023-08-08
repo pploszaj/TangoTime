@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 type Teacher = {
-    id: String;
-    firstName: String;
-    lastName: String;
-    email: String;
-    password: String;
-    phone: String;
-    role: String;
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    phone: string;
+    role: string;
+    imageURL: string;
   };
 
   type TeachersListProps = {
@@ -17,7 +18,6 @@ type Teacher = {
 
 const TeachersList = ({teachers} : TeachersListProps) => {
 
-
   return (
     <div className="teacher-list-container">
       <h1 className="choose-teacher-heading">Choose a teacher</h1>
@@ -25,6 +25,7 @@ const TeachersList = ({teachers} : TeachersListProps) => {
         {teachers.map((teacher) => (
           <Link to={`/teachers/${teacher.id}`} style={{textDecoration: 'none', color: 'inherit'}} key={Number(teacher.id)}>
             <div className="teacher-name">
+              <img src={teacher.imageURL} style={{height: '200px'}}></img>
               <p>{teacher.firstName}</p>
               <b>{teacher.lastName}</b>
             </div>

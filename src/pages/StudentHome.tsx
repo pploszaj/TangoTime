@@ -4,13 +4,14 @@ import { useQuery } from "@tanstack/react-query";
 import fetchTeachers from '../client/fetchTeachers'
 
 type Teachers = {
-  id: String;
-  firstName: String;
-  lastName: String;
-  email: String;
-  password: String;
-  phone: String;
-  role: String;
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  phone: string;
+  role: string;
+  imageURL: string
 };
 
 const StudentHome = () => {

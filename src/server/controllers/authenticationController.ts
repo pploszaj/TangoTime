@@ -14,6 +14,7 @@ const authenicationController = {
     console.log('in the create user controller')
     const { firstName, lastName, email, password, phone, role, imageURL } =
       req.body;
+    console.log('this is imageURL in the server', imageURL)
     try {
       const salt = await bcrypt.genSalt();
       const hashedPassword = await bcrypt.hash(password, salt);
