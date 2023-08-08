@@ -25,9 +25,9 @@ const TeachersList = ({teachers} : TeachersListProps) => {
         {teachers.map((teacher) => (
           <Link to={`/teachers/${teacher.id}`} style={{textDecoration: 'none', color: 'inherit'}} key={Number(teacher.id)}>
             <div className="teacher-name">
-              <img src={teacher.imageURL} style={{height: '200px'}}></img>
-              <p>{teacher.firstName}</p>
-              <b>{teacher.lastName}</b>
+              <img src={teacher.imageURL}></img>
+              {/* <p>{teacher.firstName}</p>
+              <b>{teacher.lastName}</b> */}
             </div>
           </Link>
         ))}
