@@ -19,7 +19,7 @@ type TeachersListProps = {
 const TeachersList = ({ teachers }: TeachersListProps) => {
   return (
     <div className="teacher-list-container">
-      <h1 className="choose-teacher-heading">Choose a teacher</h1>
+      <h1 className="teacher-list-heading">Pick from one of our many professionals</h1>
       <div className="teacher-list">
         {teachers.map((teacher) => (
           <Link

@@ -3,9 +3,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Quicksand&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Lemonada&display=swap");
 /* font-family: 'Great Vibes', cursive;
-// font-family: 'Lobster', cursive;
- font-family: 'Mr Dafoe', cursive;
- font-family: 'Lato', sans-serif;
+   font-family: 'Lobster', cursive;
+   font-family: 'Mr Dafoe', cursive;
+   font-family: 'Lato', sans-serif;
 */
 
 * {
@@ -288,6 +288,14 @@ body,
   margin-top: 2rem;
 }
 
+.teacher-list-heading {
+  font-family: "Quicksand", sans-serif;
+  font-size: 3rem;
+  font-weight: 100;
+  margin-top: 2rem;
+  text-align: center;
+}
+
 .teacher-image {
   position: relative;
   height: 350px;
@@ -339,7 +347,6 @@ body,
   animation-duration: .5s;
   animation-timing-function: linear;
 }
-
 
 @keyframes slide-up{
   from {
