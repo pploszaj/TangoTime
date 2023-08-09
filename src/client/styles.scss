@@ -328,15 +328,29 @@ body,
   color: white;
   font-family: "Quicksand", sans-serif;
   font-size: 1.25rem;
-
+  transition: opacity .4s;
   &:hover{
     opacity: 1;
   }
 }
 
+.teacher-image:hover .teacher-name p{
+  animation-name: slide-up;
+  animation-duration: .5s;
+  animation-timing-function: linear;
+}
 
 
-
+@keyframes slide-up{
+  from {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+  to, 50% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
 
 .role-container {
   height: 100%;
