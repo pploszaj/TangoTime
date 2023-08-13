@@ -8,6 +8,11 @@
    font-family: 'Lato', sans-serif;
 */
 
+$red: #B34343;
+$grey: #CAC7C7;
+$white: #F9F9F9;
+$black: #1F1F1F;
+
 * {
   margin: 0;
   padding: 0;
@@ -17,6 +22,8 @@
 html,
 body,
 #root {
+  margin: 0;
+  padding: 0;
   height: 100vh;
   background: #f9f9f9;
 }
@@ -55,7 +62,7 @@ body,
   justify-content: space-between;
   align-items: center;
   height: 4rem;
-  background-color: rgb(238, 94, 94);
+  background-color: $red;
   border-bottom: 1px solid black;
 }
 
@@ -71,7 +78,7 @@ body,
   justify-content: center;
   align-items: center;
   height: 91%;
-  background-color: rgb(238, 94, 94);
+  background-color: $red;
 }
 
 .home-text {
@@ -159,7 +166,7 @@ body,
 }
 
 .form h1 {
-  color: #b34343;
+  color: $red;
   text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.25);
   font-size: 34px;
   font-style: normal;
@@ -170,7 +177,7 @@ body,
 .form p {
   width: 350px;
   flex-shrink: 0;
-  color: #1f1f1f;
+  color: $black;
   font-family: "Lato", sans-serif;
   font-size: 14px;
   font-style: normal;

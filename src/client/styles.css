@@ -1,11 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lobster&family=Mr+Dafoe&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Quicksand&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Lemonada&display=swap");
+/* font-family: 'Great Vibes', cursive;
+   font-family: 'Lobster', cursive;
+   font-family: 'Mr Dafoe', cursive;
+   font-family: 'Lato', sans-serif;
+*/
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body, #root {
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
   height: 100vh;
+  background: #f9f9f9;
+}
+
+.loader-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  height: 100px;
+  -webkit-animation-name: spin;
+          animation-name: spin;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes spin {
+  from {
+    transform: none;
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: none;
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.nav img {
+  height: 40px;
+  margin-left: 3rem;
+}
+
+.home-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+  background-color: #B34343;
+  border-bottom: 1px solid black;
+}
+
+.nav-2 {
+  display: flex;
+  gap: 1.5rem;
+  margin-right: 3rem;
+  font-family: "Lato", sans-serif;
+}
+
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 91%;
+  background-color: #B34343;
+}
+
+.home-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.home-btn {
+  width: 12rem;
+  align-self: center;
+  background-color: inherit;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 10px 0px;
+  cursor: pointer;
+  font-family: "Lato", sans-serif;
+}
+
+.home-btn:hover {
+  border: 1px solid rgb(196, 8, 8);
+  color: rgb(196, 8, 8);
+}
+
+.logo-text {
+  color: rgb(196, 8, 8);
+  font-family: "Lobster", cursive;
+  font-size: 6rem;
+}
+
+.logo-text span {
+  color: black;
 }
 
 .book-me-btn {
@@ -23,11 +135,405 @@ html, body, #root {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 0.5rem;
+}
+
+.tango-time {
+  width: 639px;
+  height: 156px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 7%;
+  font-family: "Lemonada";
+  font-size: 68px;
+  background: conic-gradient(from 180deg at 50% 50%, #060606 72.3870491982deg, #cc1620 114.9952483177deg, rgba(255, 0, 0, 0) 291.0354065895deg);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.tango-time span {
+  background: conic-gradient(from 180deg at 50% 50%, #f60000 7.9336182028deg, rgba(206, 0, 0, 0.84) 21.54933393deg, rgba(0, 0, 0, 0) 193.1249928474deg, rgba(214, 0, 0, 0.87) 343.9119815826deg);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: Lemonada;
+}
+
+.form h1 {
+  color: #B34343;
+  text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.25);
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.form p {
+  width: 350px;
+  flex-shrink: 0;
+  color: #1F1F1F;
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+}
+
+.or {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: "Quicksand";
+  font-size: 15px;
+}
+
+.or hr {
+  width: 90px;
+  height: 1px;
+}
+
+.form label img {
+  border-radius: 50%;
+  cursor: pointer;
+  height: 4rem;
+  height: 11rem;
+  width: 11rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: filter 0.5s;
+  margin-bottom: 1.5rem;
+}
+
+.form label img:hover {
+  filter: grayscale(80%);
+}
+
+.form input {
+  width: 14rem;
+  height: 2.5rem;
+  border-radius: 8px;
+  border: 0px solid black;
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  padding-left: 1rem;
+  font-family: "Lato", sans-serif;
+}
+
+.login-page {
+  display: flex;
+  justify-content: space-between;
+  background: #f9f9f9;
+  position: relative;
+}
+
+.login-img img {
+  height: 100vh;
+  width: 50vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .login-container {
+  height: 100vh;
+  width: 50vw;
+  display: flex;
+  justify-content: center;
+}
+
+.login-btn {
+  cursor: pointer;
+  width: 100px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: #b34343;
+  color: #f9f9f9;
+  font-family: "Quicksand", sans-serif;
+  font-style: normal;
+  line-height: normal;
+  border: none;
+}
+
+.signup-btn {
+  cursor: pointer;
+  width: 100px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: #1f1f1f;
+  color: #f9f9f9;
+  font-family: "Quicksand", sans-serif;
+  font-style: normal;
+  line-height: normal;
+  border: none;
+}
+
+.signup-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.error-message {
+  color: #cb0d16 !important;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+}
+
+.teacher-list {
+  display: flex;
+  flex-wrap: wrap;
+  /*  gap: 2rem; */
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.teacher-list-heading {
+  font-family: "Quicksand", sans-serif;
+  font-size: 3rem;
+  font-weight: 100;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.teacher-image {
+  position: relative;
+  height: 350px;
+  width: 275px;
+  /* padding: 30px 20px; */
+  border: 1px solid rgb(235, 235, 242);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  text-decoration: none;
+}
+
+.teacher-image img {
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.teacher-image:hover {
+  border: 1px solid rgb(42, 42, 236);
+  cursor: pointer;
+}
+
+.teacher-name {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  left: 0%;
+  right: 0%;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  color: white;
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.25rem;
+  transition: opacity 0.4s;
+}
+.teacher-name:hover {
+  opacity: 1;
+}
+
+.teacher-image:hover .teacher-name p {
+  -webkit-animation-name: slide-up;
+          animation-name: slide-up;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+
+@-webkit-keyframes slide-up {
+  from {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+  to, 50% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+  to, 50% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+.role-container {
+  height: 100%;
+  background-color: rgb(248, 241, 241);
+}
+
+.role-options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  height: 90%;
+}
+
+.role-options button {
+  height: 20rem;
+  width: 16rem;
+  background-color: inherit;
+  border: 1px solid red;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Lato", sans-serif;
+  font-size: 2rem;
+}
+
+.teacher-list-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.role-options button:hover {
+  background-color: rgba(218, 26, 26, 0.271);
+}
+
+.role-options button:focus {
+  border: 1px solid blue;
+  background-color: rgba(218, 26, 26, 0.83);
+}
+
+.continue-btn {
+  text-align: center;
+}
+
+.continue-btn button {
+  cursor: pointer;
+  font-family: "Lato", sans-serif;
+  border: 1px solid red;
+  background-color: inherit;
+  border-radius: 5px;
+  height: 2rem;
+  width: 6rem;
+}
+
+.booking-page-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.calendar-container {
+  height: 70%;
+  display: flex;
+  margin-top: 3rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.times {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
+}
+
+.time-btn {
+  height: 2.5rem;
+  width: 8rem;
+  background-color: inherit;
+  border: 1px solid red;
+  border-radius: 18px;
+  cursor: pointer;
+  font-family: "Lato", sans-serif;
+  font-size: 80%;
+  padding: 8px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.time-btn:focus {
+  border: 1px solid blue;
+  background-color: blue;
+  color: white;
+}
+
+.calendar {
+  border: 1px solid black;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 25rem;
+}
+
+.book-btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.book-btn {
+  height: 3rem;
+  width: 8rem;
+  border: 1px solid blue;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.modal-container {
+  height: 100vh;
+  width: 100vw;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  -webkit-backdrop-filter: brightness(40%) blur(2px);
+          backdrop-filter: brightness(40%) blur(2px);
+}
+
+.modal {
+  background-color: white;
+  border: 1px solid rgb(168, 166, 166);
+  border-radius: 12px;
+  height: 300px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  font-family: "Lato", sans-serif;
+}
+
+.modal-btn {
+  font-family: "Lato", sans-serif;
+  background: transparent;
+  border: 1px solid rgb(196, 8, 8);
+  height: 2rem;
+  width: 5rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.modal-btn:hover {
+  background-color: rgba(196, 8, 8, 0.607);
+}
+
+.loading {
+  font-size: 80px;
+  color: blue;
+  font-weight: bold;
 }/*# sourceMappingURL=styles.css.map */

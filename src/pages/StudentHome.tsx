@@ -26,23 +26,7 @@ const StudentHome = () => {
   if(isError) {
     return <div>Error getting teachers</div>
   }
-//   useEffect(() => {
-//     const getTeachers = async () => {
-//       console.log("inside getTeachers func");
-//       try {
-//         console.log("inside try block for getteachers func");
-//         const response = await axios.get("/teachers");
-//         console.log("hello");
-//         console.log("response", response);
-//         setTeachers(response.data);
-//       } catch (e) {
-//         console.log("Error: ", e);
-//       }
-//     };
-
-//     getTeachers();
-//   }, []);
-
+  
   return (
       <TeachersList teachers={data} />
   );
