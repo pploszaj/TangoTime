@@ -527,3 +527,18 @@ body,
   color: blue;
   font-weight: bold;
 }
+
+@media screen and (max-width: 1024px) {
+  .login-img {
+    display: none;
+  }
+  .login-page {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .teacher-list-heading{
+    font-size: 2rem;
+  }
+}
