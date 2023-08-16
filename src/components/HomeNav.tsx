@@ -5,10 +5,9 @@ const HomeNav = () => {
   return (
     <div className="home-nav">
       <div className="nav">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/LEGO_logo.svg/1000px-LEGO_logo.svg.png?20221012140704"
-          alt="logo"
-        />
+      <h1 className="logo-text">
+            Tango <span>Time</span>
+          </h1>
       </div>
       <div className="nav-2">
         <Link to={'/signup'} style={{textDecoration: 'none', fontSize: '18px', color: 'black'}}>Sign up</Link>
