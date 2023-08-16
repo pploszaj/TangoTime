@@ -35,10 +35,27 @@ const Home = () => {
           to refine their skills, we have the perfect teacher waiting for you.
         </p>
       </section>
-      <section className="teachers-section">
+      <section className="benefit-points-container">
+        <div className="benefit-point">
+          <h3>Instant Access</h3>
+          Search from our comprehensive list of certified dance instructors to
+          find the one that suits you.
+        </div>
+        <div className="benefit-point">
+          <h3>Easy Booking</h3>
+          Schedule lessons at your convenience with our seamless booking
+          process.
+        </div>
+        <div className="benefit-point">
+          <h3>Learn from the Best</h3>
+          Our teachers are carefully vetted and highly skilled to ensure the
+          best learning experience.
+        </div>
+      </section>
+      {/* <section className="teachers-section">
         <h1>Our Teachers</h1>
         <TeachersImages/>
-      </section>
+      </section> */}
     </>
   );
 };

@@ -157,6 +157,13 @@ body,
 
 .teachers-section {
   background-color: rgba(128, 128, 128, 0.154);
+  & h1 {
+    font-size: 2rem;
+    padding-top: 2rem;
+    margin-bottom: 2rem;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+  }
 }
 
 .teacher-image-home {
@@ -168,6 +175,24 @@ body,
   border-radius: 12px;
 
 
+}
+
+.benefit-points-container {
+  height: 40vh;
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.benefit-point {
+  font-family: 'Lato', sans-serif;
+  width: 18vw;
+  text-align: center;
+
+  & h3 {
+    margin-bottom: .7rem;
+  }
 }
 
 .book-me-btn {
