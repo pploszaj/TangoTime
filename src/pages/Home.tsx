@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../client/styles.scss";
 import HomeNav from "../components/HomeNav";
 import myImage from "../assets/image2.jpg";
+import TeachersImages from "../components/TeachersImages";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -25,6 +26,19 @@ const Home = () => {
           </button>
         </div>
       </div>
+      <section className="about">
+        <p>
+          TangoTime is an online platform that connects aspiring dancers with
+          professional dance teachers. No matter your skill level, we make
+          finding the right dance instructor easy and booking them even easier.
+          From beginners looking for a fun new hobby to seasoned dancers seeking
+          to refine their skills, we have the perfect teacher waiting for you.
+        </p>
+      </section>
+      <section className="teachers-section">
+        <h1>Our Teachers</h1>
+        <TeachersImages/>
+      </section>
     </>
   );
 };

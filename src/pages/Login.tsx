@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import "../client/styles.scss";
 import axios from "axios";
+import image3 from '../assets/image3.jpg';
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../client/UserContext";
 
@@ -88,7 +89,7 @@ export const Login = () => {
       </div>
       <div className="login-img">
         <img
-          src="https://s3-alpha-sig.figma.com/img/f7e7/f99f/14ce2e150a45e7e5ecced39cd3d1108b?Expires=1691971200&Signature=iPEj4LgfUCp3o38pBo9G2uZ-jXLdpCrSneI8Rzig-i3ASRO2H7fAOdxrOEHZ34L-bZJW3i7sXwV7Fr5IIB0Hdg2u5hhQbVI4Cad0mfxn~X0BFA9AGjYHtaqQTbHgdkbhG6SO1WyOm1EF4AdrpAcEPJphXIOIokrwRKo03D1rFuTf35-VKWM-U-m8feDrnFKXqIEI0NLAay791C7bp9bat1CpV40ay2XMMWMVk~B9XXrfDHFmNMj8uDeunvjHWp1FuOqBVoHKqKZDPfy~5lcDqfKaDly7JmERvfrjcPpJk3vJ59KRsWe62IxZTQj8soOOUTpL54BwmmbCttotau6jig__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+          src={image3}
           alt="dance couple"
         />
       </div>
