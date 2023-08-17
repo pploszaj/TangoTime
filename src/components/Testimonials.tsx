@@ -3,7 +3,7 @@ import React from "react";
 const Testimonials = () => {
   return (
     <>
-      <figure className="snip1533">
+      <figure className="review">
         <figcaption>
           <blockquote>
             <p>
@@ -17,7 +17,7 @@ const Testimonials = () => {
           <h4>Student</h4>
         </figcaption>
       </figure>
-      <figure className="snip1533">
+      <figure className="review">
         <figcaption>
           <blockquote>
             <p>
@@ -31,7 +31,7 @@ const Testimonials = () => {
           <h4>Owner of Spotlight Dance Studio</h4>
         </figcaption>
       </figure>
-      <figure className="snip1533">
+      <figure className="review">
         <figcaption>
           <blockquote>
             <p>

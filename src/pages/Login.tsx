@@ -46,7 +46,7 @@ export const Login = () => {
         <form className="form" onSubmit={handleLogin}>
           <h1>Welcome!</h1>
           <p>
-            If you already have an account just log in with your credentials or press sign up.
+            If you already have an account just log in with your credentials or sign up today.
           </p>
           <label htmlFor="loginEmail"></label>
           <input

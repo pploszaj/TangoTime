@@ -98,8 +98,14 @@ const Home = () => {
         </div>
       </section>
       <section className="testimonials-container">
-        <Testimonials/>
+        <Testimonials />
       </section>
+      <footer>
+        <div className="footer">
+          &copy;
+          <span> 2023 TangoTime. All rights reserved.</span>
+        </div>
+      </footer>
     </>
   );
 };

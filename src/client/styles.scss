@@ -1,8 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lobster&family=Mr+Dafoe&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Quicksand&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Lemonada&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Lemonada&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lobster&family=Mr+Dafoe&family=Lato:wght@300;700&family=Quicksand&family=Lemonada&family=Ubuntu:wght@500&family=Roboto:wght@300;400&display=swap');
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
 /* font-family: 'Great Vibes', cursive;
    font-family: 'Lobster', cursive;
    font-family: 'Mr Dafoe', cursive;
@@ -10,9 +7,9 @@
 */
 
 $red: #c40f0f;
-$grey: #CAC7C7;
-$white: #F9F9F9;
-$black: #1F1F1F;
+$grey: #cac7c7;
+$white: #f9f9f9;
+$black: #1f1f1f;
 
 * {
   margin: 0;
@@ -53,6 +50,7 @@ body,
   }
 }
 
+//navbar
 .nav img {
   height: 40px;
   margin-left: 3rem;
@@ -66,7 +64,7 @@ body,
   position: absolute;
   width: 100vw;
   z-index: 1;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 .nav-2 {
@@ -83,6 +81,7 @@ body,
   margin-left: 3rem;
 }
 
+//home page
 .home-container {
   display: flex;
   justify-content: flex-start;
@@ -107,7 +106,7 @@ body,
   gap: 1.5rem;
   z-index: 1;
   margin-left: 10rem;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   color: $red;
   & p {
     font-size: 20px;
@@ -132,17 +131,16 @@ body,
   color: rgb(196, 8, 8);
 }
 
-
 .logo-text span {
   color: black;
 }
 
-.about{
+.about {
   height: 50vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-size: 1.7rem;
   text-align: center;
 
@@ -162,7 +160,7 @@ body,
     font-size: 2rem;
     padding-top: 2rem;
     margin-bottom: 2rem;
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     text-align: center;
   }
 }
@@ -174,8 +172,6 @@ body,
   margin-left: 8px;
   margin-right: 8px;
   border-radius: 12px;
-
-
 }
 
 .benefit-points-container {
@@ -189,12 +185,12 @@ body,
 }
 
 .benefit-point {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   width: 18vw;
   text-align: center;
 
   & h3 {
-    margin-bottom: .7rem;
+    margin-bottom: 0.7rem;
   }
 }
 
@@ -216,14 +212,11 @@ body,
 .gallery-grid img {
   width: 100%;
   height: 100%;
-object-fit: cover;
-filter: grayscale(90%);
-  
+  object-fit: cover;
+  filter: grayscale(90%);
 }
 
 .grid-1 {
-  // height: 400px;
-  // width: 500px;
   grid-row: 1 / 3;
   grid-column: 1 / 2;
 }
@@ -231,36 +224,24 @@ filter: grayscale(90%);
 .grid-2 {
   grid-row: 1 / 3;
   grid-column: 2 / 3;
-  // height: 400px;
-  // width: 250px;
-
 }
 
 .grid-3 {
   grid-row: 1 / 2;
   grid-column: 3 / 5;
-  // height: 200px;
-  // width: 500px;
-
 }
 
 .grid-4 {
   grid-row: 2 / 3;
   grid-column: 3 / 4;
-  // height: 200px;
-  // width: 300px;
 }
 
 .grid-5 {
   grid-row: 2 / 3;
   grid-column: 4 / 5;
-  // height: 200px;
-  // width: 200px;
 }
 
 .grid-6 {
-  // height: 400px;
-
   grid-row: 1 / 3;
   grid-column: 5 / 6;
 }
@@ -318,6 +299,7 @@ filter: grayscale(90%);
 
 .form h1 {
   color: $red;
+  font-family: "Lato", sans-serif;
   text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.25);
   font-size: 34px;
   font-style: normal;
@@ -443,7 +425,7 @@ filter: grayscale(90%);
 .teacher-list {
   display: flex;
   flex-wrap: wrap;
-/*  gap: 2rem; */
+  /*  gap: 2rem; */
   justify-content: center;
   margin-top: 2rem;
 }
@@ -460,7 +442,7 @@ filter: grayscale(90%);
   position: relative;
   height: 350px;
   width: 275px;
- /* padding: 30px 20px; */
+  /* padding: 30px 20px; */
   border: 1px solid rgb(235, 235, 242);
   border-radius: 12px;
   display: flex;
@@ -496,24 +478,25 @@ filter: grayscale(90%);
   color: white;
   font-family: "Quicksand", sans-serif;
   font-size: 1.25rem;
-  transition: opacity .4s;
-  &:hover{
+  transition: opacity 0.4s;
+  &:hover {
     opacity: 1;
   }
 }
 
-.teacher-image:hover .teacher-name p{
+.teacher-image:hover .teacher-name p {
   animation-name: slide-up;
-  animation-duration: .5s;
+  animation-duration: 0.5s;
   animation-timing-function: linear;
 }
 
-@keyframes slide-up{
+@keyframes slide-up {
   from {
     transform: translateY(50%);
     opacity: 0;
   }
-  to, 50% {
+  to,
+  50% {
     transform: translate(0);
     opacity: 1;
   }
@@ -690,7 +673,7 @@ filter: grayscale(90%);
 }
 
 @media screen and (max-width: 720px) {
-  .teacher-list-heading{
+  .teacher-list-heading {
     font-size: 2rem;
   }
 }
@@ -703,13 +686,11 @@ filter: grayscale(90%);
   height: 60vh;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Roboto:300,400);
-@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
 .snip1533 {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
   color: #8f8e8e;
   display: inline-block;
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
   font-size: 16px;
   margin: 35px 10px 10px;
   max-width: 310px;
@@ -722,19 +703,11 @@ filter: grayscale(90%);
   border-top: 5px solid $red;
 }
 
-// .snip1533 *,
-// .snip1533 *:before {
-//   -webkit-box-sizing: border-box;
-//   box-sizing: border-box;
-//   -webkit-transition: all 0.1s ease-out;
-//   transition: all 0.1s ease-out;
-// }
-
-.snip1533 figcaption {
+.review figcaption {
   padding: 13% 10% 12%;
 }
 
-.snip1533 figcaption:before {
+.review figcaption:before {
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   background-color: #fff;
@@ -742,7 +715,7 @@ filter: grayscale(90%);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   color: $red;
   content: "\f10e";
-  font-family: 'FontAwesome';
+  font-family: "FontAwesome";
   font-size: 32px;
   font-style: normal;
   left: 50%;
@@ -752,7 +725,8 @@ filter: grayscale(90%);
   width: 60px;
 }
 
-.snip1533 h3 {
+//testimonials
+.review h3 {
   color: #3c3c3c;
   font-size: 20px;
   font-weight: 300;
@@ -760,14 +734,26 @@ filter: grayscale(90%);
   margin: 10px 0 5px;
 }
 
-.snip1533 h4 {
+.review h4 {
   font-weight: 400;
   margin: 0;
   opacity: 0.5;
 }
 
-.snip1533 blockquote {
+.review blockquote {
   font-style: italic;
   font-weight: 300;
   margin: 0 0 20px;
+}
+
+//footer
+footer {
+  padding: 1.25rem;
+  background: rgba(229, 226, 226, 0.469);
+  font-family: "Lato", sans-serif;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
 }
