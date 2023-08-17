@@ -37,7 +37,10 @@ const Home = () => {
       </section>
       <section className="benefit-points-container">
         <div className="benefit-point">
-          <i className="fa-solid fa-bolt" style={{ color: "#cf2626"}}></i>
+          <i
+            className="fa-solid fa-bolt"
+            style={{ color: "#cf2626", fontSize: "40px" }}
+          ></i>
           <h3>Instant Access</h3>
           Search from our comprehensive list of certified dance instructors to
           find the one that suits you.
@@ -45,14 +48,17 @@ const Home = () => {
         <div className="benefit-point">
           <i
             className="fa-solid fa-calendar-days"
-            style={{ color: "#b81919" }}
+            style={{ color: "#b81919", fontSize: "40px" }}
           ></i>
           <h3>Easy Booking</h3>
           Schedule lessons at your convenience with our seamless booking
           process.
         </div>
         <div className="benefit-point">
-          <i className="fa-solid fa-trophy" style={{ color: "#c91d1d" }}></i>
+          <i
+            className="fa-solid fa-trophy"
+            style={{ color: "#c91d1d", fontSize: "40px" }}
+          ></i>
           <h3>Learn from the Best</h3>
           Our teachers are carefully vetted and highly skilled to ensure the
           best learning experience.
