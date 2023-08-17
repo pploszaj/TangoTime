@@ -199,14 +199,15 @@ body,
 }
 
 .gallery-grid-container {
-  height: 70vh;
+  height: 50vh;
   width: 100vw;
 }
 
 .gallery-grid {
   display: grid;
+  height: 100%;
   grid-template-columns: 33% 16.5% 20% 14% 16.5%;
-  grid-template-rows: 33% 33%;
+  grid-template-rows: 50% 50%;
   gap: 3px;
   overflow: hidden;
   // transform: scale(0.7);
