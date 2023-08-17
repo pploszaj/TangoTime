@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../client/styles.scss";
 import HomeNav from "../components/HomeNav";
 import myImage from "../assets/image2.jpg";
-import TeachersImages from "../components/TeachersImages";
+import Testimonials from "../components/Testimonials";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -97,8 +97,8 @@ const Home = () => {
           />
         </div>
       </section>
-      <section className="testimonails-container">
-        Testimonials
+      <section className="testimonials-container">
+        <Testimonials/>
       </section>
     </>
   );

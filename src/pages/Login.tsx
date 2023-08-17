@@ -46,11 +46,7 @@ export const Login = () => {
         <form className="form" onSubmit={handleLogin}>
           <h1>Welcome!</h1>
           <p>
-            If you're returning to our site, we can't wait to see you move on
-            the dance floor again. Simply log in below and let the rhythm take
-            over. If you're here for the first time, we're thrilled to welcome
-            you to our vibrant world of dance. Create an account and book a
-            lesson with one of our experienced professionals today!
+            If you already have an account just log in with your credentials or press sign up.
           </p>
           <label htmlFor="loginEmail"></label>
           <input
