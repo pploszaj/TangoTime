@@ -1,23 +1,26 @@
 import React, { useState } from "react";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import { RxDotFilled } from "react-icons/rx";
-import { IndexKind } from "typescript";
 
 const Carousel = () => {
   const [currentIndex, setcurrentIndex] = useState(0);
   const slides = [
     {
       url: "https://images.pexels.com/photos/2057273/pexels-photo-2057273.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      description: "Waltz",
     },
     {
       url: "https://images.pexels.com/photos/2188012/pexels-photo-2188012.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      description: "Cha-Cha",
     },
     {
       url: "https://cdn.pixabay.com/photo/2015/11/11/23/10/ballroom-1039371_1280.jpg",
+      description: "Tango",
     },
     {
-        url: 'https://vbds.org/wp-content/uploads/2016/08/chacha-1500x1001.jpg'
-    }
+      url: "https://vbds.org/wp-content/uploads/2016/08/chacha-1500x1001.jpg",
+      description: "Samba",
+    },
   ];
 
   const prevSlide = () => {
@@ -34,14 +37,19 @@ const Carousel = () => {
 
   const gotToSlide = (index: number) => {
     setcurrentIndex(index);
-  }
+  };
 
   return (
     <div className="carousel-container">
       <div
         className="carousel-img"
-        style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-      ></div>
+        // style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
+      >
+        <img src={slides[currentIndex].url}></img>
+      </div>
+      <div className="carousel-overlay">
+        <p>{slides[currentIndex].description}</p>
+      </div>
       <div className="arrow-left">
         <BsChevronCompactLeft size={30} onClick={prevSlide} />
       </div>
