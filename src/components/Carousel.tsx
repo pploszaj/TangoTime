@@ -7,14 +7,17 @@ const Carousel = () => {
   const [currentIndex, setcurrentIndex] = useState(0);
   const slides = [
     {
-      url: "https://images.unsplash.com/photo-1692171478312-43369ff47077?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      url: "https://images.pexels.com/photos/2057273/pexels-photo-2057273.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     },
     {
-      url: "https://images.unsplash.com/photo-1688893287893-3cac14b3a7d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
+      url: "https://images.pexels.com/photos/2188012/pexels-photo-2188012.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     },
     {
-      url: "https://images.unsplash.com/photo-1691977504044-fa2e8c813431?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      url: "https://cdn.pixabay.com/photo/2015/11/11/23/10/ballroom-1039371_1280.jpg",
     },
+    {
+        url: 'https://vbds.org/wp-content/uploads/2016/08/chacha-1500x1001.jpg'
+    }
   ];
 
   const prevSlide = () => {
