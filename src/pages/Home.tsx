@@ -4,6 +4,7 @@ import "../client/styles.scss";
 import HomeNav from "../components/HomeNav";
 import myImage from "../assets/image2.jpg";
 import Testimonials from "../components/Testimonials";
+import Carousel from '../components/Carousel'
 
 const Home = () => {
   const navigate = useNavigate();
@@ -100,6 +101,7 @@ const Home = () => {
       <section className="testimonials-container">
         <Testimonials />
       </section>
+      <Carousel/>
       <footer>
         <div className="footer">
           &copy;
