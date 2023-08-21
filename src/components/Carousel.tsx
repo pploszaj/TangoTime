@@ -40,6 +40,7 @@ const Carousel = () => {
   };
 
   return (
+    <>
     <div className="carousel-container">
       <div
         className="carousel-img"
@@ -56,14 +57,15 @@ const Carousel = () => {
       <div className="arrow-right">
         <BsChevronCompactRight size={30} onClick={nextSlide} />
       </div>
-      <div className="dots-container">
-        {slides.map((slide, index) => (
-          <div key={index} onClick={() => gotToSlide(index)} className="dots">
-            <RxDotFilled />
-          </div>
-        ))}
-      </div>
     </div>
+    <div className="dots-container">
+    {slides.map((slide, index) => (
+      <div key={index} onClick={() => gotToSlide(index)} className="dots">
+        <RxDotFilled />
+      </div>
+    ))}
+  </div>
+  </>
   );
 };
 
