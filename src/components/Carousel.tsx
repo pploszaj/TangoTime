@@ -7,19 +7,23 @@ const Carousel = () => {
   const slides = [
     {
       url: "https://images.pexels.com/photos/2057273/pexels-photo-2057273.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      description: "Waltz",
+      name: 'Waltz',
+      description: "The waltz is a timeless ballroom dance characterized by its flowing movements, graceful turns, and the distinctive 3/4 time signature. Originating in Central Europe during the late 18th century, it became a sensation in ballrooms across Europe and later, the world. The dance typically features couples gliding across the floor with elegant rise and fall actions, accompanied by a smooth, swirling rhythm. The waltz not only represents romance and sophistication but also stands as a testament to the enduring allure of partnered dance."
     },
     {
       url: "https://images.pexels.com/photos/2188012/pexels-photo-2188012.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      description: "Cha-Cha",
+      name: "Cha-Cha",
+      description: "Emerging from the vibrant rhythms of Cuba in the 1950s, the cha-cha is a lively and flirtatious ballroom dance known for its infectious rhythm and playful footwork. With a beat count of \"one, two, cha-cha-cha,\" dancers revel in a series of quick steps and hip motions, capturing the dance's spirited and cheeky nature. The cha-cha is both fun and technically challenging, making it a favorite among novice and seasoned dancers alike. Its upbeat tempo, combined with sharp movements and expressive styling, ensures the cha-cha remains a beloved staple on the dance floor."
     },
     {
       url: "https://cdn.pixabay.com/photo/2015/11/11/23/10/ballroom-1039371_1280.jpg",
-      description: "Tango",
+      name: "International Tango",
+      description: "Steeped in passion and drama, the international tango is a captivating ballroom dance that originates from the streets of Buenos Aires, Argentina. Unlike its Argentine counterpart, the international version is more structured, with staccato movements, sharp turns, and precise footwork. Danced in a close embrace, partners engage in a rhythmic conversation, conveying a narrative of desire, challenge, and unity. With its unmistakable beats and fiery essence, the international tango remains a compelling dance that exudes intensity and sophistication.",
     },
     {
       url: "https://vbds.org/wp-content/uploads/2016/08/chacha-1500x1001.jpg",
-      description: "Samba",
+      name: "Samba",
+      description: "Born in the lively carnivals of Brazil, samba is an exuberant ballroom dance that embodies the rhythms and spirit of South American culture. Recognized by its rhythmic bounce, rolling hip actions, and festive flair, samba dancers move with a pulsating energy that's both joyful and infectious. The dance is set to a distinctive 2/4 beat, marrying swift footwork with graceful body movements, evoking the vibrant parades from which it takes inspiration. Whether performed in grand competitions or social settings, samba remains a symbol of celebration, bringing a touch of Brazilian vivacity to dance floors worldwide.",
     },
   ];
 
@@ -49,6 +53,7 @@ const Carousel = () => {
         <img src={slides[currentIndex].url}></img>
       </div>
       <div className="carousel-overlay">
+        <p>{slides[currentIndex].name}</p>
         <p>{slides[currentIndex].description}</p>
       </div>
       <div className="arrow-left">

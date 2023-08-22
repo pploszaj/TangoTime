@@ -838,12 +838,18 @@ footer {
   width: 100%;
   border-radius: 1rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   color: white;
   font-family: "Quicksand", sans-serif;
   font-size: 1.25rem;
   transition: opacity 0.4s;
+}
+
+.carousel-overlay p {
+  width: 60%;
 }
 
 .carousel-img, .carousel-overlay {
