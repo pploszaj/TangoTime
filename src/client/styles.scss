@@ -538,6 +538,7 @@ body,
 }
 
 .role-options button:focus {
+  color: white;
   border: 1px solid blue;
   background-color: rgba(218, 26, 26, 0.83);
 }
@@ -843,13 +844,20 @@ footer {
   align-items: center;
   text-align: center;
   color: white;
-  font-family: "Quicksand", sans-serif;
-  font-size: 1.25rem;
+  font-family: "Lato", sans-serif;
+  font-size: 1.2rem;
+  gap: 2rem;
   transition: opacity 0.4s;
 }
 
 .carousel-overlay p {
-  width: 60%;
+  width: 75%;
+  font-size: 1.2rem;
+}
+
+.carousel-overlay h2 {
+  font-size: 2rem;
+  font-weight: 300;
 }
 
 .carousel-img, .carousel-overlay {
