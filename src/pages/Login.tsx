@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import "../client/styles.scss";
 import axios from "axios";
-import image3 from '../assets/image3.jpg';
+import image1 from '../assets/image1.jpg';
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../client/UserContext";
 
@@ -85,7 +85,7 @@ export const Login = () => {
       </div>
       <div className="login-img">
         <img
-          src={image3}
+          src={image1}
           alt="dance couple"
         />
       </div>

@@ -10,8 +10,8 @@ const HomeNav = () => {
           </h1>
       </div>
       <div className="nav-2">
-        <Link to={'/signup'} style={{textDecoration: 'none', fontSize: '18px', color: 'black'}}>Sign up</Link>
-        <Link to={'login'} style={{textDecoration: 'none', fontSize: '18px', color: 'black'}}>Log in</Link>
+        <Link to={'/signup'} className="signup">Sign up</Link>
+        <Link to={'login'} className="login">Log in</Link>
       </div>
     </div>
   );
