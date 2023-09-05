@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 const port = 3000;
 
-app.use(express.static(path.join(__dirname, "dist")));
+app.use(express.static(path.join(__dirname, "..")));
 
 app.post("/signup", authenticationController.createUser, (req, res) => {
   res.json(res.locals.userid);
@@ -46,22 +46,22 @@ app.post(
   }
 );
 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "dist", "index.html"));
-// });
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "index.html"));
+});
 
-// app.use((err: any, req: Request, res: Response, next: NextFunction) => {
-//     console.error('Error occurred: ', err);
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+    console.error('Error occurred: ', err);
 
-//   const defaultErr = {
-//     log: "Express error handler caught unknown middleware error",
-//     status: 400,
-//     message: { err: "An error global occurred" },
-//   };
-//   const errorObj = Object.assign({}, defaultErr, err);
-//   console.log(errorObj.log);
-//   return res.status(errorObj.status).json(errorObj.message);
-// });
+  const defaultErr = {
+    log: "Express error handler caught unknown middleware error",
+    status: 400,
+    message: { err: "An error global occurred" },
+  };
+  const errorObj = Object.assign({}, defaultErr, err);
+  console.log(errorObj.log);
+  return res.status(errorObj.status).json(errorObj.message);
+});
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
