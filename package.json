@@ -6,8 +6,11 @@
   "author": "Patryk Ploszaj <patryk.ploszaj07@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node ./src/server/server.ts & webpack-dev-server",
+    "start": "nodemon ./src/server/server.ts & webpack-dev-server",
     "build": "webpack"
+  },
+  "engines": {
+    "node": "16.13.0"
   },
   "dependencies": {
     "@babel/core": "^7.22.9",
