@@ -6,7 +6,7 @@
   "author": "Patryk Ploszaj <patryk.ploszaj07@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon ./src/server/server.ts & webpack-dev-server",
+    "start": "node ./src/server/server.ts & webpack-dev-server",
     "build": "webpack"
   },
   "dependencies": {
