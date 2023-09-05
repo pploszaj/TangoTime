@@ -9,9 +9,6 @@
     "start": "nodemon ./src/server/server.ts & webpack-dev-server",
     "build": "webpack"
   },
-  "engines": {
-    "node": "16.13.0"
-  },
   "dependencies": {
     "@babel/core": "^7.22.9",
     "@babel/preset-env": "^7.22.9",
