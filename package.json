@@ -6,8 +6,9 @@
   "author": "Patryk Ploszaj <patryk.ploszaj07@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon ./src/server/server.ts & webpack-dev-server",
-    "build": "webpack"
+    "start": "node ./dist/server/server.js",
+    "build": "webpack",
+    "build:server": "tsc"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
