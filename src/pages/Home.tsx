@@ -105,9 +105,7 @@ const Home = () => {
           />
         </div>
       </section>
-      <section className="testimonials-container">
         <Testimonials />
-      </section>
       <h3 className="carousel-title">Types of Dances</h3>
       <Carousel/>
       <footer>

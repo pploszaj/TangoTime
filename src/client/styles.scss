@@ -23,6 +23,7 @@ body,
   margin: 0;
   padding: 0;
   height: 100vh;
+  width: 100vw;
   background: #f9f9f9;
 }
 
@@ -90,8 +91,8 @@ body,
 
   & img {
     object-fit: cover;
-    height: 100vh;
     width: 100vw;
+    height: 100vh;
     opacity: 0.8;
     position: absolute;
     z-index: 0;
@@ -102,7 +103,9 @@ body,
 .home-text {
   display: flex;
   width: 28%;
+  height: fit-content;
   flex-direction: column;
+  flex-wrap: wrap;
   gap: 1.5rem;
   z-index: 1;
   margin-left: 10rem;
@@ -180,7 +183,7 @@ body,
   width: 100vw;
   display: flex;
   justify-content: space-around;
-  align-items: flex-start;
+  align-items: center;
   margin-bottom: 8rem;
 }
 
@@ -297,17 +300,17 @@ body,
   font-family: Lemonada;
 }
 
-.signup, .login{
-  text-decoration: none; 
+.signup,
+.login {
+  text-decoration: none;
   font-size: 18px;
   color: black;
 }
 
-
-.signup:hover, .login:hover {
+.signup:hover,
+.login:hover {
   color: $white;
 }
-
 
 .form h1 {
   color: $red;
@@ -569,6 +572,14 @@ body,
   width: 6rem;
 }
 
+.testimonials-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  height: 60vh;
+}
+
 .booking-page-container {
   display: flex;
   flex-direction: column;
@@ -691,18 +702,10 @@ body,
   }
 }
 
-.testimonials-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2rem;
-  height: 60vh;
-}
-
 .review {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
   color: #8f8e8e;
-  display: inline-block;
+  display: flex;
   font-family: "Roboto", Arial, sans-serif;
   font-size: 16px;
   margin: 35px 10px 10px;
@@ -785,7 +788,7 @@ footer {
   width: 60%;
   margin: auto;
   margin-top: 2rem;
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -796,7 +799,6 @@ footer {
     display: block;
   }
 }
-
 
 .arrow-left,
 .arrow-right {
@@ -872,7 +874,8 @@ footer {
   font-weight: 300;
 }
 
-.carousel-img, .carousel-overlay {
+.carousel-img,
+.carousel-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -882,4 +885,150 @@ footer {
 
 .carousel-container:hover .carousel-overlay {
   opacity: 0;
+}
+
+@media (max-width: 1132px) {
+  .benefit-points-container {
+    margin-bottom: 8rem;
+    margin-top: 8rem;
+  }
+
+  .about {
+    margin-top: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .home-text h1 {
+    font-size: 2rem;
+  }
+
+  .home-text p {
+    font-size: 18px;
+  }
+
+  .home-nav {
+    padding: 1rem 0;
+  }
+
+  .home-container {
+    flex-direction: column;
+  }
+
+  .home-text {
+    margin-top: 200px;
+    margin-left: 1rem;
+    width: 90%;
+  }
+
+  .about {
+    margin-top: 120px;
+    font-size: 22px;
+  }
+
+  .benefit-points-container {
+    flex-direction: column;
+    gap: 3rem;
+    margin-bottom: 16rem;
+    margin-top: 16rem;
+  }
+
+  .benefit-point {
+    width: 80%;
+  }
+
+  .gallery-grid-container {
+    height: auto;
+  }
+
+  .teacher-list-heading {
+    margin-top: 1rem;
+  }
+
+  .teacher-image {
+    margin: 1rem;
+  }
+
+  .carousel-title {
+    font-size: 2rem;
+  }
+
+  .carousel-container {
+    width: 90%;
+  }
+  .testimonials-container {
+    flex-direction: column;
+    margin-top: 20rem;
+    margin-bottom: 20rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-text h1 {
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  .logo-text {
+    margin-left: 1rem;
+  }
+  .nav-2 {
+    gap: 1rem;
+    margin-right: 1rem;
+  }
+
+  .home-text p {
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .home-btn {
+    margin-left: 5rem;
+    margin-top: 1rem;
+  }
+
+  .home-text {
+    margin-left: 0.5rem;
+  }
+
+  .teacher-list-heading {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .carousel-title {
+    font-size: 1.5rem;
+  }
+
+  .benefit-points-container {
+    flex-direction: column;
+    margin-top: 20rem;
+    margin-bottom: 20rem;
+  }
+
+  .testimonials-container {
+    flex-direction: column;
+    margin-top: 20rem;
+    margin-bottom: 20rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .benefit-points-container {
+    margin-top: 25rem;
+    margin-bottom: 20rem;
+  }
+  .about {
+    margin-top: 160px;
+    font-size: 22px;
+  }
+
+  .logo-text {
+    margin-left: 1rem;
+  }
+  .nav-2 {
+    gap: 1rem;
+    margin-right: 1rem;
+  }
 }

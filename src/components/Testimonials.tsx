@@ -2,7 +2,7 @@ import React from "react";
 
 const Testimonials = () => {
   return (
-    <>
+    <section className="testimonials-container">
       <figure className="review">
         <figcaption>
           <blockquote>
@@ -44,7 +44,7 @@ const Testimonials = () => {
           <h4>Instructor</h4>
         </figcaption>
       </figure>
-    </>
+      </section>
   );
 };
 
