@@ -2,11 +2,9 @@ import React, { useState, useContext } from "react";
 import { UserContext } from "../client/UserContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import TeacherSignup from "./TeacherSignup";
 import { storage } from "../firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { v4 } from "uuid";
-import { urlToHttpOptions } from "url";
 
 export const Signup = () => {
   const [firstName, setFirstName] = useState<string>("");
@@ -26,8 +24,7 @@ export const Signup = () => {
   const uploadImage = async () => {
     return new Promise(async (resolve, reject) => {
       if (image === null) {
-        reject("No image provided");
-        return;
+        return resolve('');
       }
       const imageRef = ref(storage, `avatars/${image?.name + v4()}`);
       try {
@@ -45,8 +42,10 @@ export const Signup = () => {
 
   const handleSignup = async (e: any) => {
     e.preventDefault();
+    const url = await uploadImage();
+    
     try {
-      const url = await uploadImage();
+      console.log('in try block')
       console.log("this is imageURL in try block", url);
       const response = await axios.post("/signup", {
         firstName,
@@ -80,9 +79,7 @@ export const Signup = () => {
       setError(true);
     }
 
-    //make post request
-    //clear inputs
-    //redirect
+  
   };
 
   const uploadHandler = (event: any) => {
